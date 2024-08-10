@@ -4112,11 +4112,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Lenovo\\Desktop\\CLONEDA\\duan\\DAL\\DAL.csproj",
+      "projectUniqueName": "C:\\Users\\Lenovo\\Desktop\\CLONEDA - Copy\\duan\\DAL\\DAL.csproj",
       "projectName": "DAL",
-      "projectPath": "C:\\Users\\Lenovo\\Desktop\\CLONEDA\\duan\\DAL\\DAL.csproj",
+      "projectPath": "C:\\Users\\Lenovo\\Desktop\\CLONEDA - Copy\\duan\\DAL\\DAL.csproj",
       "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Lenovo\\Desktop\\CLONEDA\\duan\\DAL\\obj\\",
+      "outputPath": "C:\\Users\\Lenovo\\Desktop\\CLONEDA - Copy\\duan\\DAL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

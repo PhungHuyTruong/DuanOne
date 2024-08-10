@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3UFBBlRKU8X9Q0DnHeF1SNNJMNXLCqwoikSauEjXXYT3nXW53vK+7uJhfNyu72nqObQVRK/OhcAq7WahDJ0KOw==",
+  "dgSpecHash": "jhNQ7uVVNaG+7KptWxAo1TgSXBmsC0kgw383XKk1Rg3q6+8zf+m321S7SSfQks3iuPAWLrDuuSJE+Ndo9a7wBw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Lenovo\\Desktop\\CLONEDA\\duan\\DAL\\DAL.csproj",
+  "projectFilePath": "C:\\Users\\Lenovo\\Desktop\\CLONEDA - Copy\\duan\\DAL\\DAL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Lenovo\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
