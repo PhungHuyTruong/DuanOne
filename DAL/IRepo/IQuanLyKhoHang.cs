@@ -19,5 +19,6 @@ namespace DAL.IRepo
         IEnumerable<KichCo> GetAllKichCo();
         IEnumerable<MauSac> GetAllMauSac();
         IEnumerable<GiamGium> GetAllGiamGia();
+        
     }
 }

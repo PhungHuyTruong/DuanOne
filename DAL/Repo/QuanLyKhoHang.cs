@@ -12,7 +12,7 @@ namespace DAL.Repo
     public class QuanLyKhoHang : IQuanLyKhoHang
     {
         private readonly ShopSanPhamContext _context;
-        public QuanLyKhoHang() { _context = new ShopSanPhamContext(); }
+        public QuanLyKhoHang(ShopSanPhamContext context) { _context = context; }
 
         public bool Create(SanPham sanpham)
         {

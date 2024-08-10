@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KhoHang));
             panel1 = new Panel();
             comboBox2 = new ComboBox();
@@ -82,6 +82,7 @@
             textBox2 = new TextBox();
             panel3 = new Panel();
             btn_capnhat = new Button();
+            button2 = new Button();
             btn_themkhuyenmai = new Button();
             btn_huykhuyenmai = new Button();
             txt2_denngay = new TextBox();
@@ -162,23 +163,23 @@
             dtg_sanpham.AllowUserToAddRows = false;
             dtg_sanpham.BackgroundColor = Color.FromArgb(244, 243, 243);
             dtg_sanpham.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.ActiveCaption;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dtg_sanpham.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.ActiveCaption;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dtg_sanpham.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dtg_sanpham.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.FromArgb(255, 252, 252);
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = Color.LightSkyBlue;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            dtg_sanpham.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(255, 252, 252);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.LightSkyBlue;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dtg_sanpham.DefaultCellStyle = dataGridViewCellStyle2;
             dtg_sanpham.GridColor = SystemColors.MenuBar;
             dtg_sanpham.Location = new Point(18, 67);
             dtg_sanpham.Name = "dtg_sanpham";
@@ -659,6 +660,7 @@
             // 
             panel3.BackColor = Color.White;
             panel3.Controls.Add(btn_capnhat);
+            panel3.Controls.Add(button2);
             panel3.Controls.Add(btn_themkhuyenmai);
             panel3.Controls.Add(btn_huykhuyenmai);
             panel3.Controls.Add(txt2_denngay);
@@ -706,14 +708,25 @@
             btn_capnhat.UseVisualStyleBackColor = true;
             btn_capnhat.Click += btn_capnhat_Click;
             // 
+            // button2
+            // 
+            button2.Location = new Point(983, 492);
+            button2.Name = "button2";
+            button2.Size = new Size(174, 29);
+            button2.TabIndex = 5;
+            button2.Text = "Loại ";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
             // btn_themkhuyenmai
             // 
-            btn_themkhuyenmai.Location = new Point(1059, 5);
+            btn_themkhuyenmai.Location = new Point(803, 492);
             btn_themkhuyenmai.Name = "btn_themkhuyenmai";
-            btn_themkhuyenmai.Size = new Size(97, 29);
+            btn_themkhuyenmai.Size = new Size(174, 29);
             btn_themkhuyenmai.TabIndex = 5;
-            btn_themkhuyenmai.Text = "Thêm";
+            btn_themkhuyenmai.Text = "Thêm ";
             btn_themkhuyenmai.UseVisualStyleBackColor = true;
+            btn_themkhuyenmai.Click += btn_themkhuyenmai_Click;
             // 
             // btn_huykhuyenmai
             // 
@@ -995,7 +1008,7 @@
             dtg_khuyenmai.Name = "dtg_khuyenmai";
             dtg_khuyenmai.RowHeadersVisible = false;
             dtg_khuyenmai.RowHeadersWidth = 51;
-            dtg_khuyenmai.Size = new Size(353, 482);
+            dtg_khuyenmai.Size = new Size(353, 427);
             dtg_khuyenmai.TabIndex = 0;
             dtg_khuyenmai.CellContentClick += dtg_khuyenmai_CellContentClick;
             // 
@@ -1113,5 +1126,6 @@
         private Label label28;
         private Label label27;
         private Button btn_themkhuyenmai;
+        private Button button2;
     }
 }

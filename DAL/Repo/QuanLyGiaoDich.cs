@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,9 +24,9 @@ namespace DAL.Repo
     public class QuanLyGiaoDich : IQuanLyGiaoDich
     {
         private readonly ShopSanPhamContext _context;
-        public QuanLyGiaoDich()
+        public QuanLyGiaoDich(ShopSanPhamContext context)
         {
-            _context = new ShopSanPhamContext();    
+            _context = context;
         }
 
         public async Task<CheckResult> AddChiTietGioHang(int idgiohang, int idsanpham)
@@ -83,10 +84,10 @@ namespace DAL.Repo
                 return CheckResult.KoThanhCong;
             }
         }
-        private bool CheckSoLuong(int soluong,int idsp)
+        private bool CheckSoLuong(int soluong, int idsp)
         {
             var sp = _context.SanPhams.FirstOrDefault(sp => sp.IdSanPham == idsp);
-            if(soluong > sp.SoLuong)
+            if (soluong > sp.SoLuong)
             {
                 return false;
             }
@@ -112,7 +113,7 @@ namespace DAL.Repo
                 context.GioHangs.Add(gh);
                 context.SaveChanges();
                 return gh;
-            } 
+            }
         }
 
         public async Task<List<GioHangChiTiet>> AllChiTietTrongXe(int idgiohang)
@@ -127,27 +128,27 @@ namespace DAL.Repo
             //return giohang.GioHangChiTiets.ToList();
             return await _context.GioHangChiTiets.Where(ct => ct.IdGioHang == idgiohang).Select(ct => new GioHangChiTiet
             {
-            IdGioHangChiTiet = ct.IdGioHangChiTiet,
-            IdGioHang = ct.IdGioHang,
-            IdSanPham = ct.IdSanPham,
-            TenSanPham = ct.TenSanPham,
-            SoLuong = ct.SoLuong,
-            DonGia = ct.DonGia,
-            GiamGia = ct.GiamGia,
-            ThanhTien = ct.ThanhTien
-               })
+                IdGioHangChiTiet = ct.IdGioHangChiTiet,
+                IdGioHang = ct.IdGioHang,
+                IdSanPham = ct.IdSanPham,
+                TenSanPham = ct.TenSanPham,
+                SoLuong = ct.SoLuong,
+                DonGia = ct.DonGia,
+                GiamGia = ct.GiamGia,
+                ThanhTien = ct.ThanhTien
+            })
              .ToListAsync();
         }
 
         public async Task<IEnumerable<GioHang>> AllGioHangCho()
         {
-           var list =  await _context.GioHangs.Where(gh => gh.TrangThai ==false).ToListAsync();
+            var list = await _context.GioHangs.Where(gh => gh.TrangThai == false).ToListAsync();
             return list;
         }
 
         public async Task<IEnumerable<SanPham>> AllSanPham()
         {
-            var list = await _context.SanPhams.Where(sp => sp.TrangThai == true && (sp.SoLuong > 0) ).ToListAsync();
+            var list = await _context.SanPhams.Where(sp => sp.TrangThai == true && (sp.SoLuong > 0)).ToListAsync();
             return list;
         }
 
@@ -205,7 +206,7 @@ namespace DAL.Repo
             }
         }
 
-        public async Task<(CheckResult,HoaDon)> TaoHoaDon(GioHang gioHang,int userid,bool phuongthuc,decimal tongtien,int idkhachhang)
+        public async Task<(CheckResult, HoaDon)> TaoHoaDon(GioHang gioHang, int userid, bool phuongthuc, decimal tongtien, int idkhachhang)
         {
             HoaDon hoadon = new HoaDon
             {
@@ -249,7 +250,7 @@ namespace DAL.Repo
                 return (CheckResult.KoThanhCong, null);
             }
         }
-        private  bool TinhTien(decimal tongtien,decimal tien)
+        private bool TinhTien(decimal tongtien, decimal tien)
         {
             if (tien >= tongtien)
             {
@@ -259,7 +260,7 @@ namespace DAL.Repo
         }
         public async Task TruSoLuong(HoaDon hoaDon)
         {
-            if (hoaDon.TrangThai) 
+            if (hoaDon.TrangThai)
             {
                 var list = hoaDon.HoaDonChiTiets;
                 foreach (var chitiet in list)
@@ -273,7 +274,7 @@ namespace DAL.Repo
                 await _context.SaveChangesAsync();
             }
             return;
-            
+
             //var productQuantities = hoaDon.HoaDonChiTiets
             //  .GroupBy(ct => ct.IdSanPham)
             //  .ToDictionary(g => g.Key, g => g.Sum(ct => ct.SoLuong));
@@ -291,7 +292,7 @@ namespace DAL.Repo
             //await _context.SaveChangesAsync();
         }
 
-        public async Task<CheckResult> UpdateChiTiet(int chitiet,int idsp, int soluong)
+        public async Task<CheckResult> UpdateChiTiet(int chitiet, int idsp, int soluong)
         {
             var giohangchitiet = await _context.GioHangChiTiets.FindAsync(chitiet);
             var sanpham = await _context.SanPhams.FindAsync(idsp);
@@ -324,27 +325,114 @@ namespace DAL.Repo
             }
         }
 
-        public async Task UpdateGioHang(int idgiohang,bool trangthai)
+        public async Task UpdateGioHang(int idgiohang, bool trangthai)
         {
             var giohang = await _context.GioHangs.FirstOrDefaultAsync(gh => gh.IdGioHang == idgiohang);
             giohang.TrangThai = trangthai;
             _context.GioHangs.Update(giohang);
             _context.SaveChangesAsync();
-            
+
         }
 
-        public void XacThucHoaDon(int hoadon)
-        {
-            throw new NotImplementedException();
-        }
 
         public async Task XoaGioHang(int idgiohang)
         {
-            var giohang =await _context.GioHangs.FirstOrDefaultAsync(gh => gh.IdGioHang == idgiohang);
+            var giohang = await _context.GioHangs.FirstOrDefaultAsync(gh => gh.IdGioHang == idgiohang);
             var chitiet = await _context.GioHangChiTiets.Where(ct => ct.IdGioHang == giohang.IdGioHang).ToListAsync();
             _context.GioHangChiTiets.RemoveRange(chitiet);
             _context.GioHangs.Remove(giohang);
             await _context.SaveChangesAsync();
+        }
+        public async Task<IEnumerable<HoaDon>> AllHoaDonVanChuyen()
+        {
+            var list = await _context.HoaDons.Include(id => id.IdKhachHangNavigation)
+                                             .Where(hd => hd.TrangThai == false && hd.Huy == false)
+                                             .ToListAsync();
+            return list;
+        }
+        public async Task<IEnumerable<HoaDon>> AllHoaDonDaThanhToan()
+        {
+            var list = await _context.HoaDons.Include(id => id.IdKhachHangNavigation)
+                                             .Where(hd => hd.TrangThai == true && hd.HoanTra == false)
+                                             .ToListAsync();
+            return list;
+        }
+        public async Task<IEnumerable<HoaDon>> AllHoaDonDieuKien(Expression<Func<HoaDon, bool>> predicate)
+        {
+            return await _context.HoaDons.Include(id => id.IdKhachHangNavigation).Where(predicate).ToListAsync();
+        }
+        public async Task<IEnumerable<HoaDonChiTiet>> AllChiTietHoaDon(int id)
+        {
+    
+            
+            
+var list = await _context.HoaDonChiTiets.Where(ct => ct.IdHoaDon == id).Select(ct => new HoaDonChiTiet
+            {
+                IdChiTiet  = ct.IdChiTiet,
+                IdHoaDon = id,
+                IdSanPham = ct.IdSanPham,
+                TenSanPham = ct.TenSanPham,
+                SoLuong = ct.SoLuong,
+                DonGia = ct.DonGia,
+                ThanhTien = ct.ThanhTien,
+                GiamGia = ct.GiamGia,
+            })
+            .ToListAsync();
+            return list;    
+        }
+        public async Task XacThucHoaDon(int idhoadon)
+        {
+            var hoadon = await _context.HoaDons.FirstOrDefaultAsync(id => id.IdHoaDon == idhoadon);
+            if (hoadon != null)
+            {
+
+                hoadon.TrangThai = true;
+                await TruSoLuong(hoadon);
+                await _context.SaveChangesAsync();
+            }
+        }
+
+        public async Task HUyHoaDon(int idhoadon)
+        {
+            var hoadon = await _context.HoaDons.FirstOrDefaultAsync(id => id.IdHoaDon == idhoadon);
+            if (hoadon != null)
+            {
+                hoadon.Huy = true;
+                await _context.SaveChangesAsync();
+            }
+        }
+
+        public async Task HoanTraHoaDon(int idhoadon)
+        {
+            var hoadon = await _context.HoaDons.FirstOrDefaultAsync(id => id.IdHoaDon == idhoadon);
+            if (hoadon != null)
+            {
+                hoadon.HoanTra = true;
+                await HoanTraSoluong(hoadon);
+                await _context.SaveChangesAsync();
+                
+            }
+        }
+
+        private async Task HoanTraSoluong(HoaDon hoadon)
+        {
+            if (hoadon.HoanTra == true && hoadon.TrangThai == true)
+            {
+                var list = hoadon.HoaDonChiTiets;
+                foreach (var chitiet in list)
+                {
+                    var sp = await _context.SanPhams.FirstOrDefaultAsync(sp => sp.IdSanPham == chitiet.IdSanPham);
+                    if (sp != null)
+                    {
+                        sp.SoLuong += chitiet.SoLuong;
+                    }
+                }
+                await _context.SaveChangesAsync();
+            }
+        }
+        public async Task CheckHoaDon(int id)
+        {
+            await _context.HoaDons.FindAsync(id);
         }
     }
 }

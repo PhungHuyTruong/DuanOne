@@ -5,6 +5,7 @@ using DAL.Repo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -162,6 +163,66 @@ namespace BUS.Service
         public async Task XoaGioHang(int idgiohang)
         {
             await _repo.XoaGioHang(idgiohang);
+        }
+        public async Task<IEnumerable<HoaDon>> AllHoaDonVanChuyen()
+        {
+            return await _repo.AllHoaDonVanChuyen();
+        }
+        public async Task<IEnumerable<HoaDonChiTiet>> AllChiTietHoaDon(int id)
+        {
+
+            return await _repo.AllChiTietHoaDon(id);
+        }
+        public async Task<IEnumerable<HoaDon>> AllHoaDonDaThanhToan()
+        {
+            return await _repo.AllHoaDonDaThanhToan();
+        }
+        public async Task XacThucHoaDon(int hoadon)
+        {
+             await _repo.XacThucHoaDon(hoadon);
+        }
+        public async Task HUyHoaDon(int hoadon)
+        {
+            await _repo.HUyHoaDon(hoadon);
+        }
+        public async Task HoanTraHoaDon(int hoadon)
+        {
+            await _repo.HoanTraHoaDon(hoadon);
+        }
+        public async Task<IEnumerable<HoaDon>> TimKiemVanChuyen(string timkiem, DateTime? time1 = null, DateTime? time2 = null)
+        {
+            DateTime? tu = time1?.Date;
+            DateTime? den = time2?.Date.AddDays(1).AddTicks(-1);
+            string lower = timkiem?.ToLower().Trim() ?? "";
+
+            Expression<Func<HoaDon, bool>> predicate = hd =>
+                hd.TrangThai == false &&
+                hd.Huy == false &&
+                (string.IsNullOrEmpty(lower) ||
+                 hd.IdKhachHangNavigation.SoDienThoai.ToLower().Contains(lower)) &&
+                (!tu.HasValue || hd.NgayTao >= tu.Value) &&
+                (!den.HasValue || hd.NgayTao <= den.Value);
+
+            var list = await _repo.AllHoaDonDieuKien(predicate);
+            return list ?? Enumerable.Empty<HoaDon>();
+        }
+        public async Task<IEnumerable<HoaDon>> TimKiemHoanTat(string timkiem, DateTime? time1 = null, DateTime? time2 = null)
+        {
+
+            DateTime? tu = time1?.Date;
+            DateTime? den = time2?.Date.AddDays(1).AddTicks(-1);
+            string lower = timkiem?.ToLower().Trim() ?? "";
+
+            Expression<Func<HoaDon, bool>> predicate = hd =>
+                hd.TrangThai == true &&
+                hd.HoanTra == false &&
+                (string.IsNullOrEmpty(lower) ||
+                 hd.IdKhachHangNavigation.SoDienThoai.ToLower().Contains(lower)) &&
+                (!tu.HasValue || hd.NgayTao >= tu.Value) &&
+                (!den.HasValue || hd.NgayTao <= den.Value);
+
+            var list = await _repo.AllHoaDonDieuKien(predicate);
+            return list ?? Enumerable.Empty<HoaDon>();
         }
     }
 }

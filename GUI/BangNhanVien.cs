@@ -19,7 +19,7 @@
         public void loaddatagrid(IEnumerable<NhanVien> data)
         {
             dtg_nhanvien.Rows.Clear();
-            dtg_nhanvien.ColumnCount = 12;
+            dtg_nhanvien.ColumnCount = 13;
             dtg_nhanvien.Columns[0].Name = "ID";
             dtg_nhanvien.Columns[0].Visible = false;
             dtg_nhanvien.Columns[1].Name = "RoleID";
@@ -35,6 +35,7 @@
             dtg_nhanvien.Columns[10].Visible = true;
             dtg_nhanvien.Columns[11].Name = "Pass";
             dtg_nhanvien.Columns[11].Visible = false;
+            dtg_nhanvien.Columns[12].Name = "TrangThai";
             foreach (NhanVien nv in data)
             {
                 dtg_nhanvien.Rows.Add(
@@ -49,7 +50,8 @@
                     nv.Address,
                     nv.RegistrationDate?.ToString("yyyy-MM-dd"),
                     nv.Avatar,
-                    nv.Password
+                    nv.Password,
+                    nv.TrangThai
                 );
             }
         }
@@ -104,6 +106,8 @@
                 txt_ngayvaolam.Text = cellvalue["cell9"].ToString();
                 txt_password.Text = cellvalue["cell11"].ToString();
                 selectedid = Convert.ToInt32(cellvalue["cell0"].ToString());
+                if (Convert.ToBoolean(cellvalue["cell12"]) == false) {rb_thoilam.Checked = true;}
+                else { rb_conlam.Checked = true;}
             }
 
         }
@@ -114,8 +118,8 @@
             nhanvienthem.Name = txt_ten.Text;
             nhanvienthem.DateOfBirth = DateOnly.Parse(txt_ngaysinh.Text);
 
-            if (rb_nam.Checked = true) { nhanvienthem.Gender = "Nam"; }
-            else if (rb_nu.Checked = true) { nhanvienthem.Gender = "Nữ"; }
+            if (rb_nam.Checked == true) { nhanvienthem.Gender = "Nam"; }
+            else if (rb_nu.Checked == true) { nhanvienthem.Gender = "Nữ"; }
             nhanvienthem.Email = txt_email.Text;
             nhanvienthem.PhoneNumber = txt_sodienthoai.Text;
             nhanvienthem.Address = txt_diachi.Text;
@@ -126,6 +130,7 @@
                 nhanvienthem.Avatar = _currentAvatarPath;
             }
             nhanvienthem.Password = txt_password.Text;
+            nhanvienthem.TrangThai = rb_conlam.Checked;
 
             _chucNang.UpdateNhanVien(nhanvienthem);
             loaddatagrid(_chucNang.GetAllNhanVien());
@@ -180,20 +185,7 @@
 
         }
 
-        private void btn_xoa_Click(object sender, EventArgs e)
-        {
-            int id = selectedid;
-            if (id != null)
-            {
-                var nhanvien = _chucNang.GetNhanVienByID(id);
-                if (nhanvien != null)
-                {
-                    FileManager.PicManager.DeleteAvatar(nhanvien.Avatar);
-                    _chucNang.DeleteNhanVien(id);
-                    loaddatagrid(_chucNang.GetAllNhanVien());
-                }
-            }
-        }
+
 
         private void txt_timkiem_TextChanged(object sender, EventArgs e)
         {

@@ -25,6 +25,7 @@ namespace BUS.IService
         IEnumerable<GiamGium> GetAllGiamGia();
         bool UpdateKhuyenMai(int idsanpham, int khuyenmai);
         bool DeleteKhuyenMai(int idsanpham);
-
+        bool ThemNhieuKhuyenMai(List<int> idsanpham, int idgiamgia);
+        bool HuyNhieuKhuyenMai(List<int> idsanpham);
     }   
 }

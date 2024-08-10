@@ -3,6 +3,7 @@ using DAL.Repo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -35,12 +36,14 @@ namespace DAL.IRepo
 
 
         // tab2
-        //Task<IEnumerable<HoaDon>> AllHoaDonVanChuyen();
-        //Task<IEnumerable<HoaDonChiTiet>> AllChiTietHoaDon(); 
-        //Task XacThucHoaDon(int hoadon);
-        //Task DeleteHoaDon(int hoadon);
-
-
+        Task<IEnumerable<HoaDon>> AllHoaDonVanChuyen();
+        Task<IEnumerable<HoaDon>> AllHoaDonDaThanhToan();
+        Task<IEnumerable<HoaDon>> AllHoaDonDieuKien(Expression<Func<HoaDon, bool>> predicate);
+        Task<IEnumerable<HoaDonChiTiet>> AllChiTietHoaDon(int id);
+        Task XacThucHoaDon(int hoadon);
+        Task HUyHoaDon(int hoadon);
+        Task HoanTraHoaDon(int hoadon);
+        Task CheckHoaDon(int id);
 
 
     }

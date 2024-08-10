@@ -1,5 +1,6 @@
 ﻿using DAL.IRepo;
 using DAL.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +12,9 @@ namespace DAL.Repo
     public class QuanLyNhanVien : IQuanLyNhanVien
     {
         private readonly ShopSanPhamContext _context;
-        public QuanLyNhanVien()
+        public QuanLyNhanVien(ShopSanPhamContext context)
         {
-            _context = new ShopSanPhamContext();
+            _context = context;
         }
 
         public void Create(NhanVien nhanVien)
@@ -36,7 +37,7 @@ namespace DAL.Repo
 
         public IEnumerable<NhanVien> GetAll()
         {
-             return _context.NhanViens.ToList();
+             return _context.NhanViens.AsNoTracking().ToList();
         }
 
         public NhanVien GetById(int id)

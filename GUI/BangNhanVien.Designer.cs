@@ -34,7 +34,10 @@
             dtg_nhanvien = new DataGridView();
             panel1 = new Panel();
             comboBox2 = new ComboBox();
-            panel2 = new Panel();
+            pn_thongtin = new Panel();
+            pn_trangthai = new Panel();
+            rb_conlam = new RadioButton();
+            rb_thoilam = new RadioButton();
             cbb_role = new ComboBox();
             rb_nu = new RadioButton();
             rb_nam = new RadioButton();
@@ -50,7 +53,6 @@
             label1 = new Label();
             btn_uploadanh = new Button();
             btn_update = new Button();
-            btn_xoa = new Button();
             btn_add = new Button();
             txt_password = new TextBox();
             btn_clear = new Button();
@@ -64,7 +66,8 @@
             pt_avater = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)dtg_nhanvien).BeginInit();
             panel1.SuspendLayout();
-            panel2.SuspendLayout();
+            pn_thongtin.SuspendLayout();
+            pn_trangthai.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pt_avater).BeginInit();
             SuspendLayout();
             // 
@@ -125,41 +128,72 @@
             comboBox2.Size = new Size(191, 28);
             comboBox2.TabIndex = 3;
             // 
-            // panel2
+            // pn_thongtin
             // 
-            panel2.BackColor = Color.White;
-            panel2.Controls.Add(cbb_role);
-            panel2.Controls.Add(rb_nu);
-            panel2.Controls.Add(rb_nam);
-            panel2.Controls.Add(label8);
-            panel2.Controls.Add(label10);
-            panel2.Controls.Add(label6);
-            panel2.Controls.Add(label5);
-            panel2.Controls.Add(label4);
-            panel2.Controls.Add(label9);
-            panel2.Controls.Add(label3);
-            panel2.Controls.Add(label2);
-            panel2.Controls.Add(label7);
-            panel2.Controls.Add(label1);
-            panel2.Controls.Add(btn_uploadanh);
-            panel2.Controls.Add(btn_update);
-            panel2.Controls.Add(btn_xoa);
-            panel2.Controls.Add(btn_add);
-            panel2.Controls.Add(txt_password);
-            panel2.Controls.Add(btn_clear);
-            panel2.Controls.Add(txt_diachi);
-            panel2.Controls.Add(txt_sodienthoai);
-            panel2.Controls.Add(txt_ngayvaolam);
-            panel2.Controls.Add(txt_ngaysinh);
-            panel2.Controls.Add(txt_email);
-            panel2.Controls.Add(txt_ten);
-            panel2.Controls.Add(txt_roleid);
-            panel2.Controls.Add(pt_avater);
-            panel2.Location = new Point(1031, 0);
-            panel2.Margin = new Padding(0);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(550, 950);
-            panel2.TabIndex = 3;
+            pn_thongtin.BackColor = Color.White;
+            pn_thongtin.Controls.Add(pn_trangthai);
+            pn_thongtin.Controls.Add(cbb_role);
+            pn_thongtin.Controls.Add(rb_nu);
+            pn_thongtin.Controls.Add(rb_nam);
+            pn_thongtin.Controls.Add(label8);
+            pn_thongtin.Controls.Add(label10);
+            pn_thongtin.Controls.Add(label6);
+            pn_thongtin.Controls.Add(label5);
+            pn_thongtin.Controls.Add(label4);
+            pn_thongtin.Controls.Add(label9);
+            pn_thongtin.Controls.Add(label3);
+            pn_thongtin.Controls.Add(label2);
+            pn_thongtin.Controls.Add(label7);
+            pn_thongtin.Controls.Add(label1);
+            pn_thongtin.Controls.Add(btn_uploadanh);
+            pn_thongtin.Controls.Add(btn_update);
+            pn_thongtin.Controls.Add(btn_add);
+            pn_thongtin.Controls.Add(txt_password);
+            pn_thongtin.Controls.Add(btn_clear);
+            pn_thongtin.Controls.Add(txt_diachi);
+            pn_thongtin.Controls.Add(txt_sodienthoai);
+            pn_thongtin.Controls.Add(txt_ngayvaolam);
+            pn_thongtin.Controls.Add(txt_ngaysinh);
+            pn_thongtin.Controls.Add(txt_email);
+            pn_thongtin.Controls.Add(txt_ten);
+            pn_thongtin.Controls.Add(txt_roleid);
+            pn_thongtin.Controls.Add(pt_avater);
+            pn_thongtin.Location = new Point(1031, 0);
+            pn_thongtin.Margin = new Padding(0);
+            pn_thongtin.Name = "pn_thongtin";
+            pn_thongtin.Size = new Size(550, 950);
+            pn_thongtin.TabIndex = 3;
+            // 
+            // pn_trangthai
+            // 
+            pn_trangthai.Controls.Add(rb_conlam);
+            pn_trangthai.Controls.Add(rb_thoilam);
+            pn_trangthai.Location = new Point(3, 165);
+            pn_trangthai.Name = "pn_trangthai";
+            pn_trangthai.Size = new Size(126, 77);
+            pn_trangthai.TabIndex = 7;
+            // 
+            // rb_conlam
+            // 
+            rb_conlam.AutoSize = true;
+            rb_conlam.Location = new Point(16, 14);
+            rb_conlam.Name = "rb_conlam";
+            rb_conlam.Size = new Size(88, 24);
+            rb_conlam.TabIndex = 6;
+            rb_conlam.TabStop = true;
+            rb_conlam.Text = "Còn Làm";
+            rb_conlam.UseVisualStyleBackColor = true;
+            // 
+            // rb_thoilam
+            // 
+            rb_thoilam.AutoSize = true;
+            rb_thoilam.Location = new Point(16, 44);
+            rb_thoilam.Name = "rb_thoilam";
+            rb_thoilam.Size = new Size(91, 24);
+            rb_thoilam.TabIndex = 6;
+            rb_thoilam.TabStop = true;
+            rb_thoilam.Text = "Thôi Làm";
+            rb_thoilam.UseVisualStyleBackColor = true;
             // 
             // cbb_role
             // 
@@ -317,20 +351,6 @@
             btn_update.UseVisualStyleBackColor = true;
             btn_update.Click += btn_update_Click;
             // 
-            // btn_xoa
-            // 
-            btn_xoa.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btn_xoa.Image = (Image)resources.GetObject("btn_xoa.Image");
-            btn_xoa.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_xoa.Location = new Point(14, 190);
-            btn_xoa.Name = "btn_xoa";
-            btn_xoa.Size = new Size(115, 35);
-            btn_xoa.TabIndex = 2;
-            btn_xoa.Text = "          XÓA";
-            btn_xoa.TextAlign = ContentAlignment.MiddleLeft;
-            btn_xoa.UseVisualStyleBackColor = true;
-            btn_xoa.Click += btn_xoa_Click;
-            // 
             // btn_add
             // 
             btn_add.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -436,7 +456,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(242, 242, 242);
             ClientSize = new Size(1581, 950);
-            Controls.Add(panel2);
+            Controls.Add(pn_thongtin);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "BangNhanVien";
@@ -444,8 +464,10 @@
             ((System.ComponentModel.ISupportInitialize)dtg_nhanvien).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
+            pn_thongtin.ResumeLayout(false);
+            pn_thongtin.PerformLayout();
+            pn_trangthai.ResumeLayout(false);
+            pn_trangthai.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pt_avater).EndInit();
             ResumeLayout(false);
         }
@@ -455,7 +477,7 @@
         private TextBox txt_timkiem;
         private DataGridView dtg_nhanvien;
         private Panel panel1;
-        private Panel panel2;
+        private Panel pn_thongtin;
         private TextBox txt_sodienthoai;
         private TextBox txt_email;
         private TextBox txt_ten;
@@ -477,12 +499,14 @@
         private Button btn_uploadanh;
         private ComboBox comboBox2;
         private Button btn_update;
-        private Button btn_xoa;
         private Button btn_add;
         private Label label9;
         private Label label10;
         private TextBox txt_password;
         private TextBox txt_ngayvaolam;
         private TextBox txt_ngaysinh;
+        private RadioButton rb_thoilam;
+        private RadioButton rb_conlam;
+        private Panel pn_trangthai;
     }
 }

@@ -118,6 +118,9 @@ namespace GUI
         public void LoadDataSPKhuyenMai(IEnumerable<SanPham> data, string filter)
         {
             dtg_sanphamkhuyenmai.Rows.Clear();
+            dtg_sanphamkhuyenmai.Columns.Clear();
+
+
             dtg_sanphamkhuyenmai.ColumnCount = 14;
             dtg_sanphamkhuyenmai.Columns[0].Name = "IdSanPham";
             dtg_sanphamkhuyenmai.Columns[1].Name = "IdGiamGia";
@@ -133,6 +136,9 @@ namespace GUI
             dtg_sanphamkhuyenmai.Columns[11].Name = "DenNgay";
             dtg_sanphamkhuyenmai.Columns[12].Name = "GiaGoc";
             dtg_sanphamkhuyenmai.Columns[13].Name = "GiaGiam";
+            DataGridViewCheckBoxColumn check = new DataGridViewCheckBoxColumn();
+            check.Name = "Select";
+            dtg_sanphamkhuyenmai.Columns.Add(check);
 
             dtg_sanphamkhuyenmai.Columns[0].Visible = false;
             dtg_sanphamkhuyenmai.Columns[1].Visible = false;
@@ -405,6 +411,48 @@ namespace GUI
         private void KhoHang_Load(object sender, EventArgs e)
         {
             LoadDataGrid(_services.GetAllSanPham());
+        }
+        private List<int> SelectedSanPham()
+        {
+            List<int> list = new List<int>();
+            foreach (DataGridViewRow row in dtg_sanphamkhuyenmai.Rows)
+            {
+
+                if (!row.IsNewRow && Convert.ToBoolean(row.Cells["Select"].Value))
+                {
+                    int id = Convert.ToInt32(row.Cells["IdSanPham"].Value);
+                    list.Add(id);
+                }
+            }
+            return list;
+        }
+
+        private void btn_themkhuyenmai_Click(object sender, EventArgs e)
+        {
+            if (!_services.ThemNhieuKhuyenMai(SelectedSanPham(), selectedKhuyenmai))
+            {
+                MessageBox.Show("Chua Chon San Pham / Hoac Khuyen Mai");
+                return;
+            }
+            if (cbb_boolkhuyemai.SelectedValue != null)
+            {
+                string filter = cbb_boolkhuyemai.SelectedValue.ToString();
+                LoadDataSPKhuyenMai(_services.GetAllSanPham(), filter);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (!_services.HuyNhieuKhuyenMai(SelectedSanPham()))
+            {
+                MessageBox.Show("Chua Chon San Pham");
+                return;
+            }
+            if (cbb_boolkhuyemai.SelectedValue != null)
+            {
+                string filter = cbb_boolkhuyemai.SelectedValue.ToString();
+                LoadDataSPKhuyenMai(_services.GetAllSanPham(), filter);
+            }
         }
     }
 }

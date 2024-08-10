@@ -211,5 +211,44 @@ namespace BUS.Service
                 return _repo.Update(sanphamsua);
             }
         }
+
+        public bool ThemNhieuKhuyenMai(List<int> idsanpham, int idgiamgia)
+        {   
+            bool valid = false;
+            if (idsanpham == null || idgiamgia == null)
+            {return valid;
+
+            }
+            foreach (var item in idsanpham)
+            {
+                var sp = GetSanPhamByID(item);
+                sp.IdGiamGia = idgiamgia;
+                if (_repo.Update(sp))
+                {
+                    valid = true;
+                }
+            }
+            return valid;
+        }
+
+        public bool HuyNhieuKhuyenMai(List<int> idsanpham)
+        {
+            bool valid = false;
+            if (idsanpham == null)
+            {
+                return valid;
+
+            }
+            foreach (var item in idsanpham)
+            {
+                var sp = GetSanPhamByID(item);
+                sp.IdGiamGia = null;
+                if (_repo.Update(sp))
+                {
+                    valid = true;
+                }
+            }
+            return valid;
+        }
     }
 }

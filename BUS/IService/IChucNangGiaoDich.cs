@@ -20,5 +20,14 @@ namespace BUS.IService
         Task XoaGioHang(int idgiohang);
         Task<IEnumerable<SanPham>> AllSanPham();
         Task<IEnumerable<GioHang>> AllGioHangCho();
+
+        Task<IEnumerable<HoaDon>> AllHoaDonVanChuyen();
+        Task<IEnumerable<HoaDonChiTiet>> AllChiTietHoaDon(int id);
+        Task<IEnumerable<HoaDon>> AllHoaDonDaThanhToan();
+        Task<IEnumerable<HoaDon>> TimKiemVanChuyen(string timkiem, DateTime? time1, DateTime? time2);
+        Task<IEnumerable<HoaDon>> TimKiemHoanTat(string timkiem, DateTime? time1, DateTime? time2);
+        Task XacThucHoaDon(int hoadon);
+        Task HUyHoaDon(int hoadon);
+        Task HoanTraHoaDon(int hoadon);
     }
 }
