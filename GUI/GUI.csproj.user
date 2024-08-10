@@ -4,10 +4,22 @@
     <Compile Update="BangKhachHang.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="GiamGia1.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="GiaoDich.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="GioiTinh2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Hang.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="KhoHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="KichCo2.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Login.cs">
@@ -19,10 +31,16 @@
     <Compile Update="BangNhanVien.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="MauSac2.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="ThanhToanWindow.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="ThongKe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ThuocTinh.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="VanChuyenWindow.cs">

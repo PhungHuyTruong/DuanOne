@@ -31,9 +31,9 @@ public partial class SanPham
 
     public int? IdGiamGia { get; set; }
 
-    public string? HinhAnh { get; set; }
-
     public bool TrangThai { get; set; }
+
+    public string? HinhAnh { get; set; }
 
     public virtual ICollection<GioHangChiTiet> GioHangChiTiets { get; set; } = new List<GioHangChiTiet>();
 
