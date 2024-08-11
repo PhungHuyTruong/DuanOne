@@ -46,7 +46,14 @@ namespace GUI
 
         private void btn_add13_Click_1(object sender, EventArgs e)
         {
+            if (!ValidateInput()) return;
             var ten = txt_mausac1.Text;
+            var existingMau = ser.TimKiemMau(ten);
+            if (existingMau != null && existingMau.Any())
+            {
+                MessageBox.Show("Màu này đã tồn tại.");
+                return;
+            }
 
             if (!ser.CreateMauSacSP(ten))
             {
@@ -59,8 +66,15 @@ namespace GUI
 
         private void btn_sua13_Click_1(object sender, EventArgs e)
         {
+            if (!ValidateInput()) return;
             var id = seletedid;
             var ten = txt_mausac1.Text;
+            var existingMau = ser.TimKiemMau(ten);
+            if (existingMau != null && existingMau.Any(gg => gg.IdMau != id))
+            {
+                MessageBox.Show("Màu này đã tồn tại.");
+                return;
+            }
             if (!ser.UpdateMauSacSP(id, ten))
             {
                 MessageBox.Show("Bị Trùng Thông Tin");
@@ -88,6 +102,16 @@ namespace GUI
 
                 txt_mausac1.Text = cellvalue.ContainsKey("1") ? cellvalue["1"].ToString() : string.Empty;
             }
+        }
+        private bool ValidateInput()
+        {
+            if (string.IsNullOrWhiteSpace(txt_mausac1.Text))
+            {
+                MessageBox.Show("Tên màu sắc không được để trống.");
+                return false;
+            }
+
+            return true;
         }
     }
 }

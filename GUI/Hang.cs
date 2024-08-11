@@ -64,7 +64,14 @@ namespace GUI
 
         private void btn_add10_Click(object sender, EventArgs e)
         {
+            if (!ValidateInput()) return;
             var ten = txt_tenhang1.Text;
+            var existingHang = ser.TimKiemHang(ten);
+            if (existingHang != null && existingHang.Any())
+            {
+                MessageBox.Show("Tên hãng này đã tồn tại.");
+                return;
+            }
             var diachi = txt_diachi1.Text;
 
             if (!ser.CreateHangSP(ten, diachi))
@@ -78,8 +85,15 @@ namespace GUI
 
         private void btn_sua10_Click(object sender, EventArgs e)
         {
+            if (!ValidateInput()) return;
             var id = seletedid;
             var ten = txt_tenhang1.Text;
+            var existingHang = ser.TimKiemHang(ten);
+            if (existingHang != null && existingHang.Any(gg => gg.IdHang != id))
+            {
+                MessageBox.Show("Tên hãng này đã tồn tại.");
+                return;
+            }
             var diachi = txt_diachi1.Text;
             if (!ser.UpdateHangSP(id, ten, diachi))
             {
@@ -93,6 +107,22 @@ namespace GUI
         {
             string timkiem = txt_timkiemhang.Text;
             LoadDataGrid1(ser.TimKiemHang(timkiem));
+        }
+        private bool ValidateInput()
+        {
+            if (string.IsNullOrWhiteSpace(txt_tenhang1.Text))
+            {
+                MessageBox.Show("Tên loại hãng không được để trống.");
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txt_diachi1.Text))
+            {
+                MessageBox.Show("Địa chỉ không được để trống.");
+                return false;
+            }
+
+            return true;
         }
     }
 }

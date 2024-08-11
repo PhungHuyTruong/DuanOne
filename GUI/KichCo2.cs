@@ -60,7 +60,14 @@ namespace GUI
 
         private void btn_add12_Click(object sender, EventArgs e)
         {
+            if (!ValidateInput()) return;
             var kichco = Convert.ToInt32(txt_kichco.Text);
+            var existingKichCo = ser1.TimKiemKichCo(kichco.ToString());
+            if (existingKichCo != null && existingKichCo.Any())
+            {
+                MessageBox.Show("Kích cỡ này đã tồn tại.");
+                return;
+            }
 
             if (!ser1.CreateKichCoSP(kichco))
             {
@@ -73,8 +80,15 @@ namespace GUI
 
         private void btn_sua12_Click(object sender, EventArgs e)
         {
+            if (!ValidateInput()) return;
             var id = seletedid;
             var kichco = Convert.ToInt32(txt_kichco.Text);
+            var existingKichCo = ser1.TimKiemKichCo(kichco.ToString());
+            if (existingKichCo != null && existingKichCo.Any(gg => gg.IdKichCo != id))
+            {
+                MessageBox.Show("Kích cỡ này đã tồn tại.");
+                return;
+            }
             if (!ser1.UpdateKichCoSP(id, kichco))
             {
                 MessageBox.Show("Bị Trùng Thông Tin");
@@ -104,6 +118,23 @@ namespace GUI
             {
                 MessageBox.Show($"Error searching KichCo: {ex.Message}");
             }
+        }
+        private bool ValidateInput()
+        {
+
+            if (string.IsNullOrWhiteSpace(txt_kichco.Text) || !int.TryParse(txt_kichco.Text, out int kichco))
+            {
+                MessageBox.Show("Kích cỡ phải là một số nguyên hợp lệ và không được để trống.");
+                return false;
+            }
+
+            if (kichco < 0 || kichco > 100)
+            {
+                MessageBox.Show("Kích cỡ phải nằm trong khoảng từ 0 đến 100.");
+                return false;
+            }
+
+            return true;
         }
     }
 }

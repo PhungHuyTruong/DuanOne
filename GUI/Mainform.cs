@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using BUS.CurrentHolder;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace GUI
 {
@@ -15,8 +16,25 @@ namespace GUI
 
             _serviceProvider = serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider));
             this.StartPosition = FormStartPosition.CenterScreen;
+            UpdateUIBasedOnRole();
         }
+        private void UpdateUIBasedOnRole()
+        {
+            var userRole = CurrentUser.CurrentNhavien?.Role;
 
+            if (userRole == "AD")
+            {
+                btn_thongke.Visible = true;
+                btn_thuoctinh.Visible = true;
+                btn_quanlynguoidung.Visible = true;
+            }
+            else if (userRole == "NV")
+            {
+                btn_thongke.Visible = false;
+                btn_thuoctinh.Visible = false;
+                btn_quanlynguoidung.Visible = false;
+            }
+        }
         private void menuexpand_Tick(object sender, EventArgs e)
         {
             if (menu)
@@ -81,7 +99,7 @@ namespace GUI
 
         private void btn_logoff_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void Mainform_Load(object sender, EventArgs e)

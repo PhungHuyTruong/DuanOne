@@ -17,5 +17,10 @@ namespace DAL.IRepo
 
         List<HoaDon> LayHoaDonsTheoNgay(DateTime startDate, DateTime endDate);
         decimal LayTongTienTheoNgay(DateTime startDate, DateTime endDate);
+        IEnumerable<HoaDonChiTiet> GetHoaDonChiTietsByHoaDonId(int hoaDonId);
+
+        HoaDon GetHoaDonById(int idHoaDon);
+        KhachHang GetKhachHangById(int idKhachHang);
+        NhanVien GetNhanVienById(int userId);
     }
 }

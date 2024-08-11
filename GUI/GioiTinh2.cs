@@ -61,7 +61,14 @@ namespace GUI
 
         private void btn_add11_Click(object sender, EventArgs e)
         {
+            if (!ValidateInput()) return;
             var ten = txt_gioitinh.Text;
+            var existingGioiTinh = ser.TimKiemGioiTinh(ten);
+            if (existingGioiTinh != null && existingGioiTinh.Any())
+            {
+                MessageBox.Show("Giới tính này đã tồn tại.");
+                return;
+            }
 
             if (!ser.CreateGioiTinhSP(ten))
             {
@@ -74,8 +81,15 @@ namespace GUI
 
         private void btn_sua11_Click(object sender, EventArgs e)
         {
+            if (!ValidateInput()) return;
             var id = seletedid;
             var ten = txt_gioitinh.Text;
+            var existingGioiTinh = ser.TimKiemGioiTinh(ten);
+            if (existingGioiTinh != null && existingGioiTinh.Any(gg => gg.IdGioiTinh != id))
+            {
+                MessageBox.Show("Giới tính này đã tồn tại.");
+                return;
+            }
             if (!ser.UpdateGioiTinhSP(id, ten))
             {
                 MessageBox.Show("Bị Trùng Thông Tin");
@@ -88,6 +102,16 @@ namespace GUI
         {
             string timkiem = txt_timkiemgioitinh.Text;
             LoadDataGrid4(ser.TimKiemGioiTinh(timkiem));
+        }
+        private bool ValidateInput()
+        {
+            if (string.IsNullOrWhiteSpace(txt_gioitinh.Text))
+            {
+                MessageBox.Show("Tên giới tính không được để trống.");
+                return false;
+            }
+
+            return true;
         }
     }
 }

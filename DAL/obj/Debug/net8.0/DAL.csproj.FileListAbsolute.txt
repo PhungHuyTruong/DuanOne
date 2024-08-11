@@ -58,3 +58,33 @@ C:\Users\Duc\Desktop\Duan\DuanOne\DAL\obj\Debug\net8.0\refint\DAL.dll
 C:\Users\Duc\Desktop\Duan\DuanOne\DAL\obj\Debug\net8.0\DAL.pdb
 C:\Users\Duc\Desktop\Duan\DuanOne\DAL\obj\Debug\net8.0\DAL.genruntimeconfig.cache
 C:\Users\Duc\Desktop\Duan\DuanOne\DAL\obj\Debug\net8.0\ref\DAL.dll
+C:\Users\Lenovo\Desktop\New folder (2)\DuanOne\DAL\bin\Debug\net8.0\DAL.deps.json
+C:\Users\Lenovo\Desktop\New folder (2)\DuanOne\DAL\bin\Debug\net8.0\DAL.runtimeconfig.json
+C:\Users\Lenovo\Desktop\New folder (2)\DuanOne\DAL\bin\Debug\net8.0\DAL.dll
+C:\Users\Lenovo\Desktop\New folder (2)\DuanOne\DAL\bin\Debug\net8.0\DAL.pdb
+C:\Users\Lenovo\Desktop\New folder (2)\DuanOne\DAL\obj\Debug\net8.0\DAL.csproj.AssemblyReference.cache
+C:\Users\Lenovo\Desktop\New folder (2)\DuanOne\DAL\obj\Debug\net8.0\DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lenovo\Desktop\New folder (2)\DuanOne\DAL\obj\Debug\net8.0\DAL.AssemblyInfoInputs.cache
+C:\Users\Lenovo\Desktop\New folder (2)\DuanOne\DAL\obj\Debug\net8.0\DAL.AssemblyInfo.cs
+C:\Users\Lenovo\Desktop\New folder (2)\DuanOne\DAL\obj\Debug\net8.0\DAL.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\Desktop\New folder (2)\DuanOne\DAL\obj\Debug\net8.0\DAL.sourcelink.json
+C:\Users\Lenovo\Desktop\New folder (2)\DuanOne\DAL\obj\Debug\net8.0\DAL.dll
+C:\Users\Lenovo\Desktop\New folder (2)\DuanOne\DAL\obj\Debug\net8.0\refint\DAL.dll
+C:\Users\Lenovo\Desktop\New folder (2)\DuanOne\DAL\obj\Debug\net8.0\DAL.pdb
+C:\Users\Lenovo\Desktop\New folder (2)\DuanOne\DAL\obj\Debug\net8.0\DAL.genruntimeconfig.cache
+C:\Users\Lenovo\Desktop\New folder (2)\DuanOne\DAL\obj\Debug\net8.0\ref\DAL.dll
+C:\Users\Lenovo\Desktop\DUANHOANCHINH\DuanOne\DAL\bin\Debug\net8.0\DAL.deps.json
+C:\Users\Lenovo\Desktop\DUANHOANCHINH\DuanOne\DAL\bin\Debug\net8.0\DAL.runtimeconfig.json
+C:\Users\Lenovo\Desktop\DUANHOANCHINH\DuanOne\DAL\bin\Debug\net8.0\DAL.dll
+C:\Users\Lenovo\Desktop\DUANHOANCHINH\DuanOne\DAL\bin\Debug\net8.0\DAL.pdb
+C:\Users\Lenovo\Desktop\DUANHOANCHINH\DuanOne\DAL\obj\Debug\net8.0\DAL.csproj.AssemblyReference.cache
+C:\Users\Lenovo\Desktop\DUANHOANCHINH\DuanOne\DAL\obj\Debug\net8.0\DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lenovo\Desktop\DUANHOANCHINH\DuanOne\DAL\obj\Debug\net8.0\DAL.AssemblyInfoInputs.cache
+C:\Users\Lenovo\Desktop\DUANHOANCHINH\DuanOne\DAL\obj\Debug\net8.0\DAL.AssemblyInfo.cs
+C:\Users\Lenovo\Desktop\DUANHOANCHINH\DuanOne\DAL\obj\Debug\net8.0\DAL.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\Desktop\DUANHOANCHINH\DuanOne\DAL\obj\Debug\net8.0\DAL.sourcelink.json
+C:\Users\Lenovo\Desktop\DUANHOANCHINH\DuanOne\DAL\obj\Debug\net8.0\DAL.dll
+C:\Users\Lenovo\Desktop\DUANHOANCHINH\DuanOne\DAL\obj\Debug\net8.0\refint\DAL.dll
+C:\Users\Lenovo\Desktop\DUANHOANCHINH\DuanOne\DAL\obj\Debug\net8.0\DAL.pdb
+C:\Users\Lenovo\Desktop\DUANHOANCHINH\DuanOne\DAL\obj\Debug\net8.0\DAL.genruntimeconfig.cache
+C:\Users\Lenovo\Desktop\DUANHOANCHINH\DuanOne\DAL\obj\Debug\net8.0\ref\DAL.dll

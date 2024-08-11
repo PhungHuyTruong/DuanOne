@@ -1,4 +1,4 @@
-using BUS.IService;
+﻿using BUS.IService;
 using Microsoft.Extensions.DependencyInjection;
 using System.Net.Http.Headers;
 using BUS.CurrentHolder;
@@ -32,7 +32,7 @@ namespace GUI
             }
             else 
             {
-                MessageBox.Show("ko");
+                MessageBox.Show("Mật khẩu hoặc tài khoản không đúng");
             }
 
 

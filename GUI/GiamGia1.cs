@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace GUI
 {
@@ -61,15 +62,7 @@ namespace GUI
             {
                 string timkiem = txt_timkiemgiamgia.Text;
                 var result = ser.TimKiemGiamGia(timkiem);
-
-                if (result == null || !result.Any())
-                {
-                    MessageBox.Show("No data found.");
-                }
-                else
-                {
-                    LoadDataGrid5(result);
-                }
+                LoadDataGrid5(result);
             }
             catch (Exception ex)
             {
@@ -79,37 +72,55 @@ namespace GUI
 
         private void btn_add14_Click_1(object sender, EventArgs e)
         {
-            var ten = txt_loaigiamgia1.Text;
-            var mucgiam = Convert.ToInt32(txt_mucgiam1.Text);
-            var ngaybatdau = DateTime.Parse(txt_ngaybatdau1.Text);
-            var ngayketthuc = DateTime.Parse(txt_ngayketthuc2.Text);
-            bool trangthai = cmbx_trangthai2.SelectedItem.ToString() == "True";
-
-            if (!ser.CreateGiamGiaSP(ten, mucgiam, ngaybatdau, ngayketthuc, trangthai))
+            var existingGiamGia = ser.GetAllGiamGia().FirstOrDefault(gg => gg.LoaiGiamGia.Equals(txt_loaigiamgia1.Text, StringComparison.OrdinalIgnoreCase) && gg.IdGiamGia != seletedid);
+            if (existingGiamGia != null)
             {
-                MessageBox.Show("Bị Trùng Thông Tin");
+                MessageBox.Show("Loại giảm giá đã tồn tại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            if (CheckText2())
+            {
+                var ten = txt_loaigiamgia1.Text;
+                var mucgiam = Convert.ToInt32(txt_mucgiam1.Text);
+                var ngaybatdau = DateTime.Parse(txt_ngaybatdau1.Text);
+                var ngayketthuc = DateTime.Parse(txt_ngayketthuc2.Text);
+                bool trangthai = cmbx_trangthai2.SelectedItem.ToString() == "True";
 
-            LoadDataGrid5(ser.GetAllGiamGia());
+                if (!ser.CreateGiamGiaSP(ten, mucgiam, ngaybatdau, ngayketthuc, trangthai))
+                {
+                    MessageBox.Show("Bị Trùng Thông Tin");
+                    return;
+                }
+
+                LoadDataGrid5(ser.GetAllGiamGia());
+            }
         }
 
         private void btn_sua14_Click(object sender, EventArgs e)
         {
-            var id = seletedid;
-            var ten = txt_loaigiamgia1.Text;
-            var mucgiam = Convert.ToDecimal(txt_mucgiam1.Text);
-            var ngaybatdau = DateTime.Parse(txt_ngaybatdau1.Text);
-            var ngayketthuc = DateTime.Parse(txt_ngayketthuc2.Text);
-            bool trangthai = cmbx_trangthai2.SelectedItem.ToString() == "True";
-
-            if (!ser.UpdateGiamGiaSP(id, ten, mucgiam, ngaybatdau, ngayketthuc, trangthai))
+            var existingGiamGia = ser.GetAllGiamGia().FirstOrDefault(gg => gg.LoaiGiamGia.Equals(txt_loaigiamgia1.Text, StringComparison.OrdinalIgnoreCase) && gg.IdGiamGia != seletedid);
+            if (existingGiamGia != null)
             {
-                MessageBox.Show("Bị Trùng Thông Tin");
+                MessageBox.Show("Loại giảm giá đã tồn tại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            if (CheckText2())
+            {
+                var id = seletedid;
+                var ten = txt_loaigiamgia1.Text;
+                var mucgiam = Convert.ToDecimal(txt_mucgiam1.Text);
+                var ngaybatdau = DateTime.Parse(txt_ngaybatdau1.Text);
+                var ngayketthuc = DateTime.Parse(txt_ngayketthuc2.Text);
+                bool trangthai = cmbx_trangthai2.SelectedItem.ToString() == "True";
 
-            LoadDataGrid5(ser.GetAllGiamGia());
+                if (!ser.UpdateGiamGiaSP(id, ten, mucgiam, ngaybatdau, ngayketthuc, trangthai))
+                {
+                    MessageBox.Show("Bị Trùng Thông Tin");
+                    return;
+                }
+
+                LoadDataGrid5(ser.GetAllGiamGia());
+            }
         }
 
         private void dtg_giamgia1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -137,6 +148,95 @@ namespace GUI
             }
         }
 
+        public bool CheckText2()
+        {
+            bool isValid = true;
+            var ten = Validate1.CheckTen(txt_loaigiamgia1.Text);
+            switch (ten)
+            {
+                case Validate1.Vali1.KoDuThongTin:
+                    lb_loaigiamgia.Text = "Hãy Nhập Nhiều Hơn 6 Chữ";
+                    isValid = false;
+                    break;
+                case Validate1.Vali1.KoDcDeTrong:
+                    lb_loaigiamgia.Text = "Không Được Để Trống Thông Tin";
+                    isValid = false;
+                    break;
+                case Validate1.Vali1.ChinhXac:
+                    lb_loaigiamgia.Text = "";
+                    break;
+                default:
+                    isValid = false;
+                    break;
+            }
+            var so = Validate1.CheckSo(txt_mucgiam1.Text); 
+            switch (so)
+            {
+                case Validate1.Vali1.KoDcDeTrong:
+                    lb_mucgiam.Text = "Không Được Để Trống Thông Tin"; 
+                    isValid = false;
+                    break;
+                case Validate1.Vali1.KoPhaiSo:
+                    lb_mucgiam.Text = "Phải Nhập Một Số"; 
+                    isValid = false;
+                    break;
+                case Validate1.Vali1.KoDuThongTin:
+                    lb_mucgiam.Text = "Số Phải Lớn Hơn 0 Và Nhỏ Hơn 100"; 
+                    isValid = false;
+                    break;
+                case Validate1.Vali1.ChinhXac:
+                    lb_mucgiam.Text = ""; 
+                    break;
+                default:
+                    isValid = false;
+                    break;
+            }
+            if (DateTime.TryParse(txt_ngaybatdau1.Text, out DateTime ngayBatDauDateTime) &&
+                DateTime.TryParse(txt_ngayketthuc2.Text, out DateTime ngayKetThucDateTime))
+            {
+                var ngayBatDauKetThuc = Validate1.CheckNgay(ngayBatDauDateTime, ngayKetThucDateTime);
+
+                switch (ngayBatDauKetThuc)
+                {
+                    case Validate1.Vali1.KoDcDeTrong:
+                        lb_ngaybatdau.Text = "Không Được Để Trống Ngày Bắt Đầu hoặc Ngày Kết Thúc";
+                        isValid = false;
+                        break;
+                    case Validate1.Vali1.NgayBatDauLonHonNgayKetthuc:
+                        lb_ngaybatdau.Text = "Ngày Bắt Đầu Phải Nhỏ Hơn Ngày Kết Thúc";
+                        isValid = false;
+                        break;
+                    case Validate1.Vali1.ChinhXac:
+                        lb_ngaybatdau.Text = "";
+                        break;
+                    default:
+                        isValid = false;
+                        break;
+                }
+            }
+            else
+            {
+                lb_ngaybatdau.Text = "Định Dạng Ngày Không Hợp Lệ";
+                isValid = false;
+            }
+
+            var comboBox = Validate1.CheckComboBoxSelected(cmbx_trangthai2);
+            switch (comboBox)
+            {
+                case Validate1.Vali1.KoDcDeTrong:
+                    lb_trangthai.Text = "Bạn phải chọn một trạng thái";
+                    isValid = false;
+                    break;
+                case Validate1.Vali1.ChinhXac:
+                    lb_trangthai.Text = "";
+                    break;
+                default:
+                    isValid = false;
+                    break;
+            }
+
+            return isValid;
+        }
 
 
         //private void LoadComboBoxStates()

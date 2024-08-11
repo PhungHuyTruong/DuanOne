@@ -15,6 +15,10 @@ namespace BUS.IService
         List<HoaDon> LayHoaDonsTheoNgay(DateTime startDate, DateTime endDate); // Thay đổi tên
         decimal LayTongTienTheoNgay(DateTime startDate, DateTime endDate); // Thay đổi tên
         List<HoaDonChiTiet> LayThongKeSanPhamTheoNgay(DateTime startDate, DateTime endDate); // Thay đổi tên
+        IEnumerable<HoaDonChiTiet> GetChiTietHoaDonByHoaDonId(int hoaDonId);
+        HoaDon GetHoaDonById(int idHoaDon);
+        KhachHang GetKhachHangById(int idKhachHang);
+        NhanVien GetNhanVienById(int userId);
 
     }
 }

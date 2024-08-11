@@ -17,7 +17,33 @@ namespace DAL.Repo
         {
             _context = context;
         }
+        public NhanVien GetNhanVienById(int userId)
+        {
+            return _context.NhanViens.Find(userId);
+        }
+        public IEnumerable<HoaDonChiTiet> GetHoaDonChiTietsByHoaDonId(int hoaDonId)
+        {
+            var chiTietHoaDons = _context.HoaDonChiTiets
+            .Include(ct => ct.IdSanPhamNavigation) 
+            .Where(ct => ct.IdHoaDon == hoaDonId)
+            .ToList();
 
+            return chiTietHoaDons;
+        }
+        public HoaDon GetHoaDonById(int idHoaDon)
+        {
+            var hoaDon = _context.HoaDons
+            .Include(h => h.User)
+            .Include(h => h.IdKhachHangNavigation) 
+            .FirstOrDefault(h => h.IdHoaDon == idHoaDon);
+
+            return hoaDon;
+        }
+
+        public KhachHang GetKhachHangById(int idKhachHang)
+        {
+            return _context.KhachHangs.Find(idKhachHang);
+        }
         public void Add(HoaDon entity)
         {
             _context.HoaDons.Add(entity);

@@ -2,6 +2,7 @@
 using DAL.IRepo;
 using DAL.Models;
 using DAL.Repo;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,23 @@ namespace BUS.Service
         public ChucNangThongKe(IQuanLyThongKe hoaDonRepository)
         {
             quanLyThongKe = hoaDonRepository;
+        }
+        public NhanVien GetNhanVienById(int userId)
+        {
+            return quanLyThongKe.GetNhanVienById(userId);
+        }
+        public HoaDon GetHoaDonById(int idHoaDon)
+        {
+            return quanLyThongKe.GetHoaDonById(idHoaDon);
+        }
+
+        public KhachHang GetKhachHangById(int idKhachHang)
+        {
+            return quanLyThongKe.GetKhachHangById(idKhachHang);
+        }
+        public IEnumerable<HoaDonChiTiet> GetChiTietHoaDonByHoaDonId(int hoaDonId)
+        {
+            return quanLyThongKe.GetHoaDonChiTietsByHoaDonId(hoaDonId);
         }
 
         public IEnumerable<HoaDon> GetHoaDonsByDateRange(DateTime startDate, DateTime endDate)
