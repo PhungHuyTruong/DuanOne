@@ -133,15 +133,16 @@ namespace GUI
         public void loaddatasp(IEnumerable<SanPham> data)
         {
             dtg_sanpham.Rows.Clear();
-            dtg_sanpham.ColumnCount = 3;
+            dtg_sanpham.ColumnCount = 4;
             dtg_sanpham.Columns[0].Name = "Id";
             dtg_sanpham.Columns[1].Name = "Ten";
             dtg_sanpham.Columns[2].Name = "Gia";
+            dtg_sanpham.Columns[3].Name = "SoLuong";
 
             dtg_sanpham.Columns[0].Visible = false;
             foreach (SanPham item in data)
             {
-                dtg_sanpham.Rows.Add(item.IdSanPham, item.TenSanPham, item.Gia);
+                dtg_sanpham.Rows.Add(item.IdSanPham, item.TenSanPham, item.Gia,item.SoLuong);
             }
 
         }
@@ -297,8 +298,9 @@ namespace GUI
             int idgiohang = CurrentCart.currentcart.IdGioHang;
             int userid = currentuser.UserId;
             bool phuongthuc = true;
+            bool vanchuyen = false;
 
-            var result = await _services.ThanhToan(idgiohang, userid, tien, phuongthuc, 0);
+            var result = await _services.ThanhToan(idgiohang, userid, tien, phuongthuc, 0, vanchuyen);
             switch (result)
             {
                 case CheckResult.ThanhCong:
@@ -335,8 +337,9 @@ namespace GUI
                     int idgiohang = CurrentCart.currentcart.IdGioHang;
                     int userid = currentuser.UserId;
                     bool phuongthuc = false;
+                    bool vanchuyen = true;
 
-                    var result = await _services.ThanhToan(idgiohang, userid, tien, phuongthuc, kh);
+                    var result = await _services.ThanhToan(idgiohang, userid, tien, phuongthuc, kh, vanchuyen);
                     switch (result)
                     {
                         case CheckResult.ThanhCong:

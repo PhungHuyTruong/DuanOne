@@ -20,8 +20,8 @@ namespace DAL.IRepo
 
 
           Task TruSoLuong(HoaDon hoaDon);
-          Task<(CheckResult, HoaDon)> TaoHoaDon(GioHang gioHang, int userid, bool phuongthuc, decimal tongtien, int idkhachhang);
-          Task<CheckResult> ThanhToan(int idgiohang, int userid, decimal tien, bool phuongthuc, int idkhachhang);
+          Task<(CheckResult, HoaDon)> TaoHoaDon(GioHang gioHang, int userid, bool phuongthuc, decimal tongtien, int idkhachhang, bool vanchuyen);
+          Task<CheckResult> ThanhToan(int idgiohang, int userid, decimal tien, bool phuongthuc, int idkhachhang, bool vanchuyen);
 
           Task XoaGioHang(int idgiohang);
           

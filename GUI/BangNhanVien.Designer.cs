@@ -230,7 +230,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Arial", 10.5F, FontStyle.Bold);
-            label8.Location = new Point(22, 835);
+            label8.Location = new Point(14, 835);
             label8.Name = "label8";
             label8.Size = new Size(94, 21);
             label8.TabIndex = 3;
@@ -367,9 +367,9 @@
             // 
             // txt_password
             // 
-            txt_password.Location = new Point(123, 893);
+            txt_password.Location = new Point(117, 895);
             txt_password.Name = "txt_password";
-            txt_password.Size = new Size(415, 27);
+            txt_password.Size = new Size(419, 27);
             txt_password.TabIndex = 1;
             // 
             // btn_clear

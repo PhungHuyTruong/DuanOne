@@ -28,17 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
             tabs = new TabControl();
             tb_thanhtoan = new TabPage();
             flo_giohangcho = new FlowLayoutPanel();
             panel4 = new Panel();
+            pictureBox1 = new PictureBox();
             dtg_sanpham = new DataGridView();
+            button2 = new Button();
             panel3 = new Panel();
             btn_vanchuyen = new Button();
             btn_treodon = new Button();
@@ -101,6 +103,7 @@
             tabs.SuspendLayout();
             tb_thanhtoan.SuspendLayout();
             panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dtg_sanpham).BeginInit();
             panel3.SuspendLayout();
             panel2.SuspendLayout();
@@ -151,11 +154,22 @@
             // panel4
             // 
             panel4.BackColor = Color.White;
+            panel4.Controls.Add(pictureBox1);
             panel4.Controls.Add(dtg_sanpham);
+            panel4.Controls.Add(button2);
             panel4.Location = new Point(1052, 0);
             panel4.Name = "panel4";
             panel4.Size = new Size(375, 916);
             panel4.TabIndex = 2;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BorderStyle = BorderStyle.FixedSingle;
+            pictureBox1.Location = new Point(13, 28);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(348, 170);
+            pictureBox1.TabIndex = 1;
+            pictureBox1.TabStop = false;
             // 
             // dtg_sanpham
             // 
@@ -167,23 +181,32 @@
             dtg_sanpham.BorderStyle = BorderStyle.None;
             dtg_sanpham.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtg_sanpham.ColumnHeadersVisible = false;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(252, 252, 252);
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = Color.LightSkyBlue;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
-            dtg_sanpham.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = Color.FromArgb(252, 252, 252);
+            dataGridViewCellStyle7.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle7.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = Color.LightSkyBlue;
+            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.False;
+            dtg_sanpham.DefaultCellStyle = dataGridViewCellStyle7;
             dtg_sanpham.GridColor = SystemColors.MenuBar;
-            dtg_sanpham.Location = new Point(13, 82);
+            dtg_sanpham.Location = new Point(13, 204);
             dtg_sanpham.Name = "dtg_sanpham";
             dtg_sanpham.ReadOnly = true;
             dtg_sanpham.RowHeadersVisible = false;
             dtg_sanpham.RowHeadersWidth = 51;
-            dtg_sanpham.Size = new Size(348, 815);
+            dtg_sanpham.Size = new Size(348, 693);
             dtg_sanpham.TabIndex = 0;
             dtg_sanpham.CellContentDoubleClick += dtg_sanpham_CellContentDoubleClick;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(13, 3);
+            button2.Name = "button2";
+            button2.Size = new Size(82, 29);
+            button2.TabIndex = 2;
+            button2.Text = "button2";
+            button2.UseVisualStyleBackColor = true;
             // 
             // panel3
             // 
@@ -278,14 +301,14 @@
             dtg_xesanpham.BackgroundColor = Color.FromArgb(244, 243, 243);
             dtg_xesanpham.BorderStyle = BorderStyle.None;
             dtg_xesanpham.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(252, 252, 252);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = Color.LightSkyBlue;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dtg_xesanpham.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = Color.FromArgb(252, 252, 252);
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle8.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = Color.LightSkyBlue;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
+            dtg_xesanpham.DefaultCellStyle = dataGridViewCellStyle8;
             dtg_xesanpham.GridColor = SystemColors.ScrollBar;
             dtg_xesanpham.Location = new Point(9, 12);
             dtg_xesanpham.Name = "dtg_xesanpham";
@@ -516,14 +539,14 @@
             dtg_chitiethoantat.BackgroundColor = Color.FromArgb(244, 243, 243);
             dtg_chitiethoantat.BorderStyle = BorderStyle.None;
             dtg_chitiethoantat.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(252, 252, 252);
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = Color.LightSkyBlue;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dtg_chitiethoantat.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = Color.FromArgb(252, 252, 252);
+            dataGridViewCellStyle9.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle9.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle9.SelectionBackColor = Color.LightSkyBlue;
+            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.False;
+            dtg_chitiethoantat.DefaultCellStyle = dataGridViewCellStyle9;
             dtg_chitiethoantat.GridColor = SystemColors.ScrollBar;
             dtg_chitiethoantat.Location = new Point(293, 457);
             dtg_chitiethoantat.Name = "dtg_chitiethoantat";
@@ -571,14 +594,14 @@
             dtg_hoadondaxong.BackgroundColor = Color.FromArgb(244, 243, 243);
             dtg_hoadondaxong.BorderStyle = BorderStyle.None;
             dtg_hoadondaxong.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.FromArgb(252, 252, 252);
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = Color.LightSkyBlue;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            dtg_hoadondaxong.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = Color.FromArgb(252, 252, 252);
+            dataGridViewCellStyle10.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle10.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = Color.LightSkyBlue;
+            dataGridViewCellStyle10.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.False;
+            dtg_hoadondaxong.DefaultCellStyle = dataGridViewCellStyle10;
             dtg_hoadondaxong.GridColor = SystemColors.ScrollBar;
             dtg_hoadondaxong.Location = new Point(14, 37);
             dtg_hoadondaxong.Name = "dtg_hoadondaxong";
@@ -769,14 +792,14 @@
             dtg_chittietvanchuyen.BackgroundColor = Color.FromArgb(244, 243, 243);
             dtg_chittietvanchuyen.BorderStyle = BorderStyle.None;
             dtg_chittietvanchuyen.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.FromArgb(252, 252, 252);
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = Color.LightSkyBlue;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
-            dtg_chittietvanchuyen.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = Color.FromArgb(252, 252, 252);
+            dataGridViewCellStyle11.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle11.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = Color.LightSkyBlue;
+            dataGridViewCellStyle11.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.False;
+            dtg_chittietvanchuyen.DefaultCellStyle = dataGridViewCellStyle11;
             dtg_chittietvanchuyen.GridColor = SystemColors.ScrollBar;
             dtg_chittietvanchuyen.Location = new Point(424, 458);
             dtg_chittietvanchuyen.Name = "dtg_chittietvanchuyen";
@@ -824,14 +847,14 @@
             dtg_hoadonvanchuyen.BackgroundColor = Color.FromArgb(244, 243, 243);
             dtg_hoadonvanchuyen.BorderStyle = BorderStyle.None;
             dtg_hoadonvanchuyen.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = Color.FromArgb(252, 252, 252);
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle6.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = Color.LightSkyBlue;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            dtg_hoadonvanchuyen.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = Color.FromArgb(252, 252, 252);
+            dataGridViewCellStyle12.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle12.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle12.SelectionBackColor = Color.LightSkyBlue;
+            dataGridViewCellStyle12.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.False;
+            dtg_hoadonvanchuyen.DefaultCellStyle = dataGridViewCellStyle12;
             dtg_hoadonvanchuyen.GridColor = SystemColors.ScrollBar;
             dtg_hoadonvanchuyen.Location = new Point(11, 37);
             dtg_hoadonvanchuyen.Name = "dtg_hoadonvanchuyen";
@@ -855,6 +878,7 @@
             tabs.ResumeLayout(false);
             tb_thanhtoan.ResumeLayout(false);
             panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dtg_sanpham).EndInit();
             panel3.ResumeLayout(false);
             panel2.ResumeLayout(false);
@@ -941,5 +965,7 @@
         private Button btn_timdatagrid1;
         private TextBox txt_timkiem2;
         private Button btn_timdatagrid2;
+        private PictureBox pictureBox1;
+        private Button button2;
     }
 }

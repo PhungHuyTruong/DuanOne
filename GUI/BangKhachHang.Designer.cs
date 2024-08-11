@@ -50,9 +50,9 @@
             // 
             panel1.BackColor = Color.White;
             panel1.Controls.Add(dtg_khachhang);
-            panel1.Location = new Point(793, -2);
+            panel1.Location = new Point(1144, -2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(353, 467);
+            panel1.Size = new Size(439, 950);
             panel1.TabIndex = 0;
             // 
             // dtg_khachhang
@@ -63,7 +63,7 @@
             dtg_khachhang.Name = "dtg_khachhang";
             dtg_khachhang.RowHeadersVisible = false;
             dtg_khachhang.RowHeadersWidth = 51;
-            dtg_khachhang.Size = new Size(325, 436);
+            dtg_khachhang.Size = new Size(410, 926);
             dtg_khachhang.TabIndex = 0;
             dtg_khachhang.CellClick += dtg_khachhang_CellClick;
             // 
@@ -82,12 +82,12 @@
             panel2.Controls.Add(txt_ten);
             panel2.Location = new Point(1, -2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(767, 467);
+            panel2.Size = new Size(1137, 467);
             panel2.TabIndex = 1;
             // 
             // btn_them
             // 
-            btn_them.Location = new Point(450, 411);
+            btn_them.Location = new Point(819, 411);
             btn_them.Name = "btn_them";
             btn_them.Size = new Size(132, 39);
             btn_them.TabIndex = 3;
@@ -97,7 +97,7 @@
             // 
             // btn_capnhat
             // 
-            btn_capnhat.Location = new Point(623, 411);
+            btn_capnhat.Location = new Point(978, 411);
             btn_capnhat.Name = "btn_capnhat";
             btn_capnhat.Size = new Size(132, 39);
             btn_capnhat.TabIndex = 3;
@@ -146,28 +146,28 @@
             txt_diachi.Location = new Point(117, 209);
             txt_diachi.Multiline = true;
             txt_diachi.Name = "txt_diachi";
-            txt_diachi.Size = new Size(638, 175);
+            txt_diachi.Size = new Size(993, 175);
             txt_diachi.TabIndex = 0;
             // 
             // txt_email
             // 
             txt_email.Location = new Point(117, 141);
             txt_email.Name = "txt_email";
-            txt_email.Size = new Size(638, 27);
+            txt_email.Size = new Size(993, 27);
             txt_email.TabIndex = 0;
             // 
             // txt_sodienthoai
             // 
             txt_sodienthoai.Location = new Point(117, 84);
             txt_sodienthoai.Name = "txt_sodienthoai";
-            txt_sodienthoai.Size = new Size(638, 27);
+            txt_sodienthoai.Size = new Size(993, 27);
             txt_sodienthoai.TabIndex = 0;
             // 
             // txt_ten
             // 
             txt_ten.Location = new Point(117, 27);
             txt_ten.Name = "txt_ten";
-            txt_ten.Size = new Size(638, 27);
+            txt_ten.Size = new Size(993, 27);
             txt_ten.TabIndex = 0;
             // 
             // BangKhachHang

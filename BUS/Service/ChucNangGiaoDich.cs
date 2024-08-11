@@ -108,12 +108,12 @@ namespace BUS.Service
         }
 
 
-        public async Task<CheckResult> ThanhToan(int idgiohang, int userid, decimal tien, bool phuongthuc, int idkhachhang)
+        public async Task<CheckResult> ThanhToan(int idgiohang, int userid, decimal tien, bool phuongthuc, int idkhachhang, bool vanchuyen)
         {
             if (idgiohang <= 0) { return CheckResult.KoTimThayGH; } 
             if (userid <= 0) { return CheckResult.KoTimThayUser; }
 
-            var result = await _repo.ThanhToan(idgiohang, userid, tien, phuongthuc, idkhachhang);
+            var result = await _repo.ThanhToan(idgiohang, userid, tien, phuongthuc, idkhachhang,vanchuyen);
             switch (result)
             {
                 case CheckResult.KoTimThayGH:

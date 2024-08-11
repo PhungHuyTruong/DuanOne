@@ -148,7 +148,7 @@ namespace DAL.Repo
 
         public async Task<IEnumerable<SanPham>> AllSanPham()
         {
-            var list = await _context.SanPhams.Where(sp => sp.TrangThai == true && (sp.SoLuong > 0)).ToListAsync();
+            var list = await _context.SanPhams.Where(sp => sp.TrangThai == true && (sp.SoLuong > 0)).AsNoTracking().ToListAsync();
             return list;
         }
 
@@ -172,7 +172,7 @@ namespace DAL.Repo
             }
         }
 
-        public async Task<CheckResult> ThanhToan(int idgiohang, int userid, decimal tien, bool phuongthuc, int idkhachhang)
+        public async Task<CheckResult> ThanhToan(int idgiohang, int userid, decimal tien, bool phuongthuc, int idkhachhang ,bool vanchuyen)
         {
             using var transaction = await _context.Database.BeginTransactionAsync();
             try
@@ -188,7 +188,7 @@ namespace DAL.Repo
                 if (!TinhTien(tongtien, tien))
                     return CheckResult.ThieuTien;
 
-                var (result, hoadon) = await TaoHoaDon(giohang, userid, phuongthuc, tongtien, idkhachhang);
+                var (result, hoadon) = await TaoHoaDon(giohang, userid, phuongthuc, tongtien, idkhachhang,vanchuyen);
                 if (result == CheckResult.ThanhCong && hoadon != null)
                 {
                     await TruSoLuong(hoadon);
@@ -206,14 +206,16 @@ namespace DAL.Repo
             }
         }
 
-        public async Task<(CheckResult, HoaDon)> TaoHoaDon(GioHang gioHang, int userid, bool phuongthuc, decimal tongtien, int idkhachhang)
+        public async Task<(CheckResult, HoaDon)> TaoHoaDon(GioHang gioHang, int userid, bool phuongthuc, decimal tongtien, int idkhachhang,bool vanchuyen)
         {
             HoaDon hoadon = new HoaDon
             {
                 UserId = userid,
                 TrangThai = phuongthuc,
                 TongTien = tongtien,
-                IdKhachHang = phuongthuc ? (int?)null : idkhachhang
+                IdKhachHang = phuongthuc ? (int?)null : idkhachhang,
+                VanChuyen = vanchuyen
+                
             };
 
             List<HoaDonChiTiet> chiTietList = new List<HoaDonChiTiet>();
@@ -260,7 +262,7 @@ namespace DAL.Repo
         }
         public async Task TruSoLuong(HoaDon hoaDon)
         {
-            if (hoaDon.TrangThai)
+            if (hoaDon.TrangThai || hoaDon.VanChuyen)
             {
                 var list = hoaDon.HoaDonChiTiets;
                 foreach (var chitiet in list)
@@ -346,7 +348,7 @@ namespace DAL.Repo
         public async Task<IEnumerable<HoaDon>> AllHoaDonVanChuyen()
         {
             var list = await _context.HoaDons.Include(id => id.IdKhachHangNavigation)
-                                             .Where(hd => hd.TrangThai == false && hd.Huy == false)
+                                             .Where(hd => hd.TrangThai == false && hd.Huy == false  && hd.VanChuyen == true)
                                              .ToListAsync();
             return list;
         }
@@ -362,11 +364,8 @@ namespace DAL.Repo
             return await _context.HoaDons.Include(id => id.IdKhachHangNavigation).Where(predicate).ToListAsync();
         }
         public async Task<IEnumerable<HoaDonChiTiet>> AllChiTietHoaDon(int id)
-        {
-    
-            
-            
-var list = await _context.HoaDonChiTiets.Where(ct => ct.IdHoaDon == id).Select(ct => new HoaDonChiTiet
+        {    
+        var list = await _context.HoaDonChiTiets.Where(ct => ct.IdHoaDon == id).Select(ct => new HoaDonChiTiet
             {
                 IdChiTiet  = ct.IdChiTiet,
                 IdHoaDon = id,
@@ -398,6 +397,7 @@ var list = await _context.HoaDonChiTiets.Where(ct => ct.IdHoaDon == id).Select(c
             if (hoadon != null)
             {
                 hoadon.Huy = true;
+                await HoanTraSoluong(hoadon);
                 await _context.SaveChangesAsync();
             }
         }
@@ -416,7 +416,7 @@ var list = await _context.HoaDonChiTiets.Where(ct => ct.IdHoaDon == id).Select(c
 
         private async Task HoanTraSoluong(HoaDon hoadon)
         {
-            if (hoadon.HoanTra == true && hoadon.TrangThai == true)
+            if ((hoadon.HoanTra == true && hoadon.TrangThai == true) || (hoadon.Huy == true && hoadon.VanChuyen ==true) )
             {
                 var list = hoadon.HoaDonChiTiets;
                 foreach (var chitiet in list)

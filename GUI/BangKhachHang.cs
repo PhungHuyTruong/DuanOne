@@ -74,7 +74,7 @@ namespace GUI
         {
             int index = e.RowIndex;
             var chon = dtg_khachhang.Rows[index];
-            if(index >= 0)
+            if (index >= 0)
             {
                 txt_ten.Text = chon.Cells[1].Value.ToString();
                 txt_sodienthoai.Text = chon.Cells[2].Value.ToString();
@@ -83,5 +83,32 @@ namespace GUI
                 selectedid = Convert.ToInt32(chon.Cells[0].Value);
             }
         }
+        public bool CheckThongTinNhap()
+        {
+            if (String.IsNullOrEmpty(txt_ten.Text))
+            {
+                MessageBox.Show("Hay Nhap Ten");
+                return false;
+            }
+            if (String.IsNullOrEmpty(txt_sodienthoai.Text))
+            {
+                MessageBox.Show("Hay Nhap So Dien Thoai");
+                return false;
+            }
+            if (String.IsNullOrEmpty(txt_email.Text))
+            {
+                MessageBox.Show("Hay Nhap Emaail");
+                return false;
+            }
+            if (String.IsNullOrEmpty(txt_diachi.Text))
+            {
+                MessageBox.Show("Hay Nhap Dia Chi");
+                return false;
+            }
+
+            return true;
+        }
+
+
     }
 }

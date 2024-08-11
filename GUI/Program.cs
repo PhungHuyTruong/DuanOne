@@ -33,7 +33,7 @@ namespace GUI
         private static void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ShopSanPhamContext>(options =>
-                options.UseSqlServer("Server=PHUNGHUYTRUONG\\SQLEXPRESS;Database=ShopSanPham;Trusted_Connection=True;TrustServerCertificate=true"));
+                options.UseSqlServer("Server=ANHDUC;Database=ShopSanPham;Trusted_Connection=True;TrustServerCertificate=true"));
 
             services.AddScoped<IQuanLyDangNhap,QuanLyDangNhap>();
             services.AddScoped<IChucNangDangNhap, ChucNangDangNhap>();

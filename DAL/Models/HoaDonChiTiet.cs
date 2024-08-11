@@ -17,7 +17,7 @@ public partial class HoaDonChiTiet
 
     public decimal DonGia { get; set; }
 
-    public decimal ThanhTien { get; set; }
+    public decimal? ThanhTien { get; set; }
 
     public decimal? GiamGia { get; set; }
 

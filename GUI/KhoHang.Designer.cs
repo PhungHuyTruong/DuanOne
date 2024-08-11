@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KhoHang));
             panel1 = new Panel();
             comboBox2 = new ComboBox();
@@ -115,6 +115,11 @@
             label16 = new Label();
             textBox1 = new TextBox();
             dtg_khuyenmai = new DataGridView();
+            linkLabel1 = new LinkLabel();
+            linkLabel2 = new LinkLabel();
+            linkLabel3 = new LinkLabel();
+            linkLabel4 = new LinkLabel();
+            linkLabel5 = new LinkLabel();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtg_sanpham).BeginInit();
             tabControl1.SuspendLayout();
@@ -163,23 +168,23 @@
             dtg_sanpham.AllowUserToAddRows = false;
             dtg_sanpham.BackgroundColor = Color.FromArgb(244, 243, 243);
             dtg_sanpham.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.ActiveCaption;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dtg_sanpham.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.ActiveCaption;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dtg_sanpham.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dtg_sanpham.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(255, 252, 252);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = Color.LightSkyBlue;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dtg_sanpham.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(255, 252, 252);
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = Color.LightSkyBlue;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            dtg_sanpham.DefaultCellStyle = dataGridViewCellStyle4;
             dtg_sanpham.GridColor = SystemColors.MenuBar;
             dtg_sanpham.Location = new Point(18, 67);
             dtg_sanpham.Name = "dtg_sanpham";
@@ -228,6 +233,11 @@
             // panel2
             // 
             panel2.BackColor = Color.White;
+            panel2.Controls.Add(linkLabel5);
+            panel2.Controls.Add(linkLabel4);
+            panel2.Controls.Add(linkLabel3);
+            panel2.Controls.Add(linkLabel2);
+            panel2.Controls.Add(linkLabel1);
             panel2.Controls.Add(pt_hinhanh);
             panel2.Controls.Add(rb_ngungknihdoanh);
             panel2.Controls.Add(rb_kinhdoanh);
@@ -285,7 +295,7 @@
             // 
             rb_ngungknihdoanh.AutoSize = true;
             rb_ngungknihdoanh.FlatStyle = FlatStyle.System;
-            rb_ngungknihdoanh.Location = new Point(17, 188);
+            rb_ngungknihdoanh.Location = new Point(17, 165);
             rb_ngungknihdoanh.Name = "rb_ngungknihdoanh";
             rb_ngungknihdoanh.Size = new Size(166, 25);
             rb_ngungknihdoanh.TabIndex = 13;
@@ -296,7 +306,7 @@
             // 
             rb_kinhdoanh.AutoSize = true;
             rb_kinhdoanh.FlatStyle = FlatStyle.System;
-            rb_kinhdoanh.Location = new Point(17, 228);
+            rb_kinhdoanh.Location = new Point(16, 196);
             rb_kinhdoanh.Name = "rb_kinhdoanh";
             rb_kinhdoanh.Size = new Size(116, 25);
             rb_kinhdoanh.TabIndex = 13;
@@ -360,7 +370,7 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(16, 501);
+            label12.Location = new Point(16, 475);
             label12.Name = "label12";
             label12.Size = new Size(67, 20);
             label12.TabIndex = 12;
@@ -387,7 +397,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(12, 449);
+            label5.Location = new Point(13, 420);
             label5.Name = "label5";
             label5.Size = new Size(74, 20);
             label5.TabIndex = 12;
@@ -396,7 +406,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(14, 399);
+            label4.Location = new Point(14, 367);
             label4.Name = "label4";
             label4.Size = new Size(73, 20);
             label4.TabIndex = 12;
@@ -414,7 +424,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(14, 342);
+            label2.Location = new Point(14, 312);
             label2.Name = "label2";
             label2.Size = new Size(48, 20);
             label2.TabIndex = 12;
@@ -423,7 +433,7 @@
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new Point(17, 286);
+            label13.Location = new Point(17, 255);
             label13.Name = "label13";
             label13.Size = new Size(35, 20);
             label13.TabIndex = 12;
@@ -467,7 +477,7 @@
             // 
             cbb_hangsanpham.DropDownStyle = ComboBoxStyle.DropDownList;
             cbb_hangsanpham.FormattingEnabled = true;
-            cbb_hangsanpham.Location = new Point(93, 334);
+            cbb_hangsanpham.Location = new Point(93, 304);
             cbb_hangsanpham.Name = "cbb_hangsanpham";
             cbb_hangsanpham.Size = new Size(444, 28);
             cbb_hangsanpham.TabIndex = 10;
@@ -504,21 +514,21 @@
             // 
             // txt_barcode
             // 
-            txt_barcode.Location = new Point(94, 494);
+            txt_barcode.Location = new Point(94, 468);
             txt_barcode.Name = "txt_barcode";
             txt_barcode.Size = new Size(444, 27);
             txt_barcode.TabIndex = 9;
             // 
             // txt_kieugiay
             // 
-            txt_kieugiay.Location = new Point(93, 442);
+            txt_kieugiay.Location = new Point(94, 413);
             txt_kieugiay.Name = "txt_kieugiay";
             txt_kieugiay.Size = new Size(444, 27);
             txt_kieugiay.TabIndex = 9;
             // 
             // txt_chatlieu
             // 
-            txt_chatlieu.Location = new Point(93, 392);
+            txt_chatlieu.Location = new Point(93, 360);
             txt_chatlieu.Name = "txt_chatlieu";
             txt_chatlieu.Size = new Size(444, 27);
             txt_chatlieu.TabIndex = 9;
@@ -526,14 +536,14 @@
             // txt_ten
             // 
             txt_ten.BackColor = Color.White;
-            txt_ten.Location = new Point(93, 279);
+            txt_ten.Location = new Point(93, 248);
             txt_ten.Name = "txt_ten";
             txt_ten.Size = new Size(445, 27);
             txt_ten.TabIndex = 9;
             // 
             // txt_id
             // 
-            txt_id.Location = new Point(93, 279);
+            txt_id.Location = new Point(93, 248);
             txt_id.Name = "txt_id";
             txt_id.Size = new Size(74, 27);
             txt_id.TabIndex = 9;
@@ -565,7 +575,7 @@
             btn_update.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_update.Image = (Image)resources.GetObject("btn_update.Image");
             btn_update.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_update.Location = new Point(14, 134);
+            btn_update.Location = new Point(16, 124);
             btn_update.Name = "btn_update";
             btn_update.Size = new Size(115, 35);
             btn_update.TabIndex = 5;
@@ -579,7 +589,7 @@
             btn_add.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_add.Image = (Image)resources.GetObject("btn_add.Image");
             btn_add.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_add.Location = new Point(14, 74);
+            btn_add.Location = new Point(16, 66);
             btn_add.Name = "btn_add";
             btn_add.Size = new Size(115, 35);
             btn_add.TabIndex = 7;
@@ -593,7 +603,7 @@
             btn_clear.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_clear.Image = (Image)resources.GetObject("btn_clear.Image");
             btn_clear.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_clear.Location = new Point(14, 13);
+            btn_clear.Location = new Point(16, 14);
             btn_clear.Name = "btn_clear";
             btn_clear.Size = new Size(115, 35);
             btn_clear.TabIndex = 8;
@@ -636,7 +646,6 @@
             // dtg_sanphamkhuyenmai
             // 
             dtg_sanphamkhuyenmai.AllowUserToAddRows = false;
-            dtg_sanphamkhuyenmai.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dtg_sanphamkhuyenmai.BackgroundColor = Color.FromArgb(244, 243, 243);
             dtg_sanphamkhuyenmai.BorderStyle = BorderStyle.None;
             dtg_sanphamkhuyenmai.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -999,7 +1008,6 @@
             // dtg_khuyenmai
             // 
             dtg_khuyenmai.AllowUserToAddRows = false;
-            dtg_khuyenmai.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dtg_khuyenmai.BackgroundColor = Color.FromArgb(244, 243, 243);
             dtg_khuyenmai.BorderStyle = BorderStyle.None;
             dtg_khuyenmai.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -1011,6 +1019,56 @@
             dtg_khuyenmai.Size = new Size(353, 427);
             dtg_khuyenmai.TabIndex = 0;
             dtg_khuyenmai.CellContentClick += dtg_khuyenmai_CellContentClick;
+            // 
+            // linkLabel1
+            // 
+            linkLabel1.AutoSize = true;
+            linkLabel1.Location = new Point(93, 278);
+            linkLabel1.Name = "linkLabel1";
+            linkLabel1.Size = new Size(76, 20);
+            linkLabel1.TabIndex = 14;
+            linkLabel1.TabStop = true;
+            linkLabel1.Text = "linkLabel1";
+            // 
+            // linkLabel2
+            // 
+            linkLabel2.AutoSize = true;
+            linkLabel2.Location = new Point(94, 335);
+            linkLabel2.Name = "linkLabel2";
+            linkLabel2.Size = new Size(76, 20);
+            linkLabel2.TabIndex = 14;
+            linkLabel2.TabStop = true;
+            linkLabel2.Text = "linkLabel1";
+            // 
+            // linkLabel3
+            // 
+            linkLabel3.AutoSize = true;
+            linkLabel3.Location = new Point(94, 390);
+            linkLabel3.Name = "linkLabel3";
+            linkLabel3.Size = new Size(76, 20);
+            linkLabel3.TabIndex = 14;
+            linkLabel3.TabStop = true;
+            linkLabel3.Text = "linkLabel1";
+            // 
+            // linkLabel4
+            // 
+            linkLabel4.AutoSize = true;
+            linkLabel4.Location = new Point(94, 443);
+            linkLabel4.Name = "linkLabel4";
+            linkLabel4.Size = new Size(76, 20);
+            linkLabel4.TabIndex = 14;
+            linkLabel4.TabStop = true;
+            linkLabel4.Text = "linkLabel1";
+            // 
+            // linkLabel5
+            // 
+            linkLabel5.AutoSize = true;
+            linkLabel5.Location = new Point(94, 498);
+            linkLabel5.Name = "linkLabel5";
+            linkLabel5.Size = new Size(76, 20);
+            linkLabel5.TabIndex = 14;
+            linkLabel5.TabStop = true;
+            linkLabel5.Text = "linkLabel1";
             // 
             // KhoHang
             // 
@@ -1127,5 +1185,10 @@
         private Label label27;
         private Button btn_themkhuyenmai;
         private Button button2;
+        private LinkLabel linkLabel5;
+        private LinkLabel linkLabel4;
+        private LinkLabel linkLabel3;
+        private LinkLabel linkLabel2;
+        private LinkLabel linkLabel1;
     }
 }
