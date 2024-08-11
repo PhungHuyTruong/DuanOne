@@ -12,11 +12,12 @@ namespace GUI
         public Mainform(IServiceProvider serviceProvider)
         {
             InitializeComponent();
-
+           
             _serviceProvider = serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider));
             this.StartPosition = FormStartPosition.CenterScreen;
+            var trangchu = _serviceProvider.GetRequiredService<TrangChu>();
+            ShowFormInPanel(trangchu);
         }
-
         private void menuexpand_Tick(object sender, EventArgs e)
         {
             if (menu)
@@ -81,7 +82,7 @@ namespace GUI
 
         private void btn_logoff_Click(object sender, EventArgs e)
         {
-            this.Close();
+           Application.Exit();
         }
 
         private void Mainform_Load(object sender, EventArgs e)
@@ -96,7 +97,8 @@ namespace GUI
 
         private void btn_trangchu_Click_1(object sender, EventArgs e)
         {
-
+            var trangchu = _serviceProvider.GetRequiredService<TrangChu>();
+            ShowFormInPanel(trangchu);
         }
 
         private void btn_thuoctinh_Click(object sender, EventArgs e)

@@ -714,6 +714,7 @@
             // dtg_sanphamkhuyenmai
             // 
             dtg_sanphamkhuyenmai.AllowUserToAddRows = false;
+            dtg_sanphamkhuyenmai.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dtg_sanphamkhuyenmai.BackgroundColor = Color.FromArgb(244, 243, 243);
             dtg_sanphamkhuyenmai.BorderStyle = BorderStyle.None;
             dtg_sanphamkhuyenmai.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -732,6 +733,7 @@
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(197, 27);
             textBox2.TabIndex = 1;
+            textBox2.TextChanged += textBox2_TextChanged;
             // 
             // panel3
             // 

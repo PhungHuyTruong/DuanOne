@@ -224,5 +224,10 @@ namespace BUS.Service
             var list = await _repo.AllHoaDonDieuKien(predicate);
             return list ?? Enumerable.Empty<HoaDon>();
         }
+
+        public Task<SanPham> GetSPBarcode(string barcode)
+        {
+            return _repo.GetSPBarcode(barcode);
+        }
     }
 }

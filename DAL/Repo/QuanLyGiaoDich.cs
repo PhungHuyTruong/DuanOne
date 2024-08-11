@@ -434,5 +434,19 @@ namespace DAL.Repo
         {
             await _context.HoaDons.FindAsync(id);
         }
+
+        public async Task<SanPham> GetSPBarcode(string barcode)
+        {
+            try
+            {
+                var sp = await _context.SanPhams.Where(sp => sp.Barcode == barcode).FirstOrDefaultAsync();
+                return sp;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+          
+        }
     }
 }

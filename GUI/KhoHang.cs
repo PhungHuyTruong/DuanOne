@@ -122,6 +122,9 @@ namespace GUI
 
 
             dtg_sanphamkhuyenmai.ColumnCount = 14;
+            DataGridViewCheckBoxColumn check = new DataGridViewCheckBoxColumn();
+            check.Name = "Select";
+            dtg_sanphamkhuyenmai.Columns.Add(check);
             dtg_sanphamkhuyenmai.Columns[0].Name = "IdSanPham";
             dtg_sanphamkhuyenmai.Columns[1].Name = "IdGiamGia";
             dtg_sanphamkhuyenmai.Columns[2].Name = "TenSanPham";
@@ -136,9 +139,7 @@ namespace GUI
             dtg_sanphamkhuyenmai.Columns[11].Name = "DenNgay";
             dtg_sanphamkhuyenmai.Columns[12].Name = "GiaGoc";
             dtg_sanphamkhuyenmai.Columns[13].Name = "GiaGiam";
-            DataGridViewCheckBoxColumn check = new DataGridViewCheckBoxColumn();
-            check.Name = "Select";
-            dtg_sanphamkhuyenmai.Columns.Add(check);
+           
 
             dtg_sanphamkhuyenmai.Columns[0].Visible = false;
             dtg_sanphamkhuyenmai.Columns[1].Visible = false;
@@ -618,10 +619,20 @@ namespace GUI
             txt_mucgiam.Text = null;
             txt_tengiamgia.Text = null;
             txt_mota.Text = null;
-            txt_gia.Text =null;
+            txt_gia.Text = null;
             txt_soluong.Text = null;
             _currentpic = null;
             seletedid = -1;
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            string timkiem = textBox2.Text;
+            if (cbb_boolkhuyemai.SelectedValue != null)
+            {
+                string filter = cbb_boolkhuyemai.SelectedValue.ToString();
+                LoadDataSPKhuyenMai(_services.SearchSanPham(timkiem), filter);
+            }
         }
     }
 }

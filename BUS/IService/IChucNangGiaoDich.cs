@@ -29,5 +29,6 @@ namespace BUS.IService
         Task XacThucHoaDon(int hoadon);
         Task HUyHoaDon(int hoadon);
         Task HoanTraHoaDon(int hoadon);
+        Task<SanPham> GetSPBarcode(string barcode);
     }
 }

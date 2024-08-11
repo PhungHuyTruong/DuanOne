@@ -40,7 +40,7 @@
             panel4 = new Panel();
             pictureBox1 = new PictureBox();
             dtg_sanpham = new DataGridView();
-            button2 = new Button();
+            btn_cam = new Button();
             panel3 = new Panel();
             btn_vanchuyen = new Button();
             btn_treodon = new Button();
@@ -156,7 +156,7 @@
             panel4.BackColor = Color.White;
             panel4.Controls.Add(pictureBox1);
             panel4.Controls.Add(dtg_sanpham);
-            panel4.Controls.Add(button2);
+            panel4.Controls.Add(btn_cam);
             panel4.Location = new Point(1052, 0);
             panel4.Name = "panel4";
             panel4.Size = new Size(375, 916);
@@ -199,14 +199,15 @@
             dtg_sanpham.TabIndex = 0;
             dtg_sanpham.CellContentDoubleClick += dtg_sanpham_CellContentDoubleClick;
             // 
-            // button2
+            // btn_cam
             // 
-            button2.Location = new Point(13, 3);
-            button2.Name = "button2";
-            button2.Size = new Size(82, 29);
-            button2.TabIndex = 2;
-            button2.Text = "button2";
-            button2.UseVisualStyleBackColor = true;
+            btn_cam.Location = new Point(12, 3);
+            btn_cam.Name = "btn_cam";
+            btn_cam.Size = new Size(82, 29);
+            btn_cam.TabIndex = 2;
+            btn_cam.Text = "Start";
+            btn_cam.UseVisualStyleBackColor = true;
+            btn_cam.Click += btn_cam_Click;
             // 
             // panel3
             // 
@@ -875,6 +876,8 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "GiaoDich";
             Text = "GiaoDich";
+            FormClosing += GiaoDich_FormClosing;
+            FormClosed += GiaoDich_FormClosed;
             tabs.ResumeLayout(false);
             tb_thanhtoan.ResumeLayout(false);
             panel4.ResumeLayout(false);
@@ -966,6 +969,6 @@
         private TextBox txt_timkiem2;
         private Button btn_timdatagrid2;
         private PictureBox pictureBox1;
-        private Button button2;
+        private Button btn_cam;
     }
 }

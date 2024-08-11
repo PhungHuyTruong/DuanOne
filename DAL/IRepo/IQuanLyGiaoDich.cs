@@ -45,6 +45,8 @@ namespace DAL.IRepo
         Task HoanTraHoaDon(int hoadon);
         Task CheckHoaDon(int id);
 
+        Task<SanPham> GetSPBarcode(string barcode);
+
 
     }
 }

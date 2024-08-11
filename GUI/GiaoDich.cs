@@ -6,6 +6,12 @@ using BUS.IService;
 using DAL.Repo;
 using GUI.Properties;
 using Microsoft.VisualBasic.ApplicationServices;
+using AForge.Video.DirectShow;
+using AForge.Video;
+using ZXing;
+using ZXing.QrCode;
+using ZXing.Common;
+using ZXing.Windows.Compatibility;
 namespace GUI
 {
     public partial class GiaoDich : Form
@@ -13,6 +19,9 @@ namespace GUI
         private readonly IChucNangKhachHang _khachhangservices;
         private readonly IChucNangGiaoDich _services;
         private NhanVien currentuser = CurrentUser.CurrentNhavien;
+        private VideoCaptureDevice videoSource;
+        private System.Windows.Forms.Timer scanTimer;
+        private readonly SemaphoreSlim _throttleSemaphore = new SemaphoreSlim(1, 1);
 
         private int idvanchuyen = -1;
         private int idhoantat = -1;
@@ -22,6 +31,8 @@ namespace GUI
             _khachhangservices = khachanhservices;
             _services = services;
             InitializeComponent();
+            InitializeCamera();
+            InitializeTimer();
             taogiohang();
             LoadAsync();
 
@@ -142,7 +153,7 @@ namespace GUI
             dtg_sanpham.Columns[0].Visible = false;
             foreach (SanPham item in data)
             {
-                dtg_sanpham.Rows.Add(item.IdSanPham, item.TenSanPham, item.Gia,item.SoLuong);
+                dtg_sanpham.Rows.Add(item.IdSanPham, item.TenSanPham, item.Gia, item.SoLuong);
             }
 
         }
@@ -592,7 +603,137 @@ namespace GUI
             {
                 TimkKiemHoanTat();
             }
-         
+
+        }
+        // camera
+        private void InitializeCamera()
+        {
+            FilterInfoCollection videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+            if (videoDevices.Count > 0)
+            {
+                videoSource = new VideoCaptureDevice(videoDevices[0].MonikerString);
+                videoSource.NewFrame += VideoSource_NewFrame;
+            }
+            else
+            {
+                MessageBox.Show("No camera found.");
+            }
+        }
+
+        private void InitializeTimer()
+        {
+            scanTimer = new System.Windows.Forms.Timer();
+            scanTimer.Interval = 200; // Scan every 200ms
+            scanTimer.Tick += ScanTimer_Tick;
+        }
+        private void VideoSource_NewFrame(object sender, NewFrameEventArgs eventArgs)
+        {
+            pictureBox1.Image = (Bitmap)eventArgs.Frame.Clone();
+        }
+
+        private async void ScanTimer_Tick(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image != null)
+            {
+                using (Bitmap bitmap = new Bitmap(pictureBox1.Image))
+                {
+                    var reader = new BarcodeReader
+                    {
+                        Options = new ZXing.Common.DecodingOptions
+                        {
+                            TryHarder = true,
+                            PossibleFormats = null // Allow all formats
+                        }
+                    };
+                    Result result = reader.Decode(bitmap);
+
+                    if (result != null)
+                    {
+                        var sp = await _services.GetSPBarcode(result.Text);
+                        if (sp != null)
+                        {
+                            await _throttleSemaphore.WaitAsync();
+                            try
+                            {
+                                await AddSP(sp);
+                            }
+                            finally
+                            {
+                                _throttleSemaphore.Release();
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ko Thấy Sản Phẩm");
+                        }
+                    }
+                }
+            }
+        }
+        private async Task AddSP(SanPham sp)
+        {
+            if (sp == null)
+            {
+                MessageBox.Show("Ko Có Sản Phẩm");
+            }
+            int spid = sp.IdSanPham;
+            CheckResult result = await _services.AddChiTietGioHang(CurrentCart.currentcart.IdGioHang, spid);
+
+            switch (result)
+            {
+                case CheckResult.KoDuSoLuong:
+                    MessageBox.Show("Ko Đủ Số Lượng");
+                    break;
+                case CheckResult.KoThanhCong:
+                    MessageBox.Show("Ko Thêm Đc Sẩn Phẩm");
+                    break;
+                case CheckResult.ThanhCong:
+                    LoadAsync(); // Ensure LoadAsync is awaited if it's async
+                    break;
+                default:
+                    MessageBox.Show("Ko Thêm Đc Sẩn Phẩm");
+                    break;
+            }
+        }
+
+
+        private void btn_cam_Click(object sender, EventArgs e)
+        {
+            if (videoSource != null)
+            {
+                if (!videoSource.IsRunning)
+                {
+                    videoSource.Start();
+                    scanTimer.Start();
+                    btn_cam.Text = "Stop";
+                }
+                else
+                {
+                    videoSource.SignalToStop();
+                    videoSource.WaitForStop();
+                    scanTimer.Stop();
+                    btn_cam.Text = "Start";
+                    pictureBox1.Image = null;
+                }
+            }
+        }
+
+        private void GiaoDich_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (videoSource != null && videoSource.IsRunning)
+            {
+                videoSource.SignalToStop();
+                videoSource.WaitForStop();
+            }
+        }
+
+        private void GiaoDich_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (videoSource != null && videoSource.IsRunning)
+            {
+                videoSource.SignalToStop();
+                videoSource.WaitForStop();
+            }
         }
     }
 }

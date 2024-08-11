@@ -64,6 +64,7 @@ namespace GUI
             services.AddTransient<KichCo2>();
             services.AddTransient<GioiTinh2>();
             services.AddTransient<MauSac2>();
+            services.AddTransient<TrangChu>();
 
         }
     }
