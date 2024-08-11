@@ -12,7 +12,7 @@ namespace GUI
 {
     public class ValidateText
     {
-        public enum Validate
+        public enum Vali
         {
             ChinhXac,
             KoDcDeTrong,
@@ -21,59 +21,60 @@ namespace GUI
             KoDungEmail,
             KoDungDomain,
             KoPhaiSo,
+            KoChinhXac
 
         }
-        static Validate CheckTen(TextBox text)
+        public static Vali CheckTen(string text)
         {
-            if (string.IsNullOrEmpty(text.Text))
+            if (string.IsNullOrEmpty(text))
             {
-                return Validate.KoDcDeTrong;
+                return Vali.KoDcDeTrong;
             }
-            if(text.Text.Length <= 6)
+            if(text.Length <= 6)
             {
-                return Validate.KoDuThongTin;
+                return Vali.KoDuThongTin;
             }
-            return Validate.ChinhXac;
+            return Vali.ChinhXac;
         }
-        static Validate CheckSo(TextBox text)
+        public static Vali CheckSo(string text)
         {
-            if (string.IsNullOrEmpty(text.Text))
+            if (string.IsNullOrEmpty(text))
             {
-                return Validate.KoDcDeTrong;
+                return Vali.KoDcDeTrong;
             }
-            if(!int.TryParse(text.Text,out int result))
+            if(!int.TryParse(text,out int result))
             {
-                return Validate.KoPhaiSo;
+                return Vali.KoPhaiSo;
             }
-            if(text.Text.Length < 1)
+            if(text.Length < 1)
             {
-                return Validate.KoDuThongTin;
+                return Vali.KoDuThongTin;
             }
-            return Validate.ChinhXac;
+            return Vali.ChinhXac;
         }
-        static Validate CheckSDT(TextBox text)
+        public static Vali CheckSDT(string text)
         {
-            if (string.IsNullOrEmpty(text.Text))
+            if (string.IsNullOrEmpty(text))
             {
-                return Validate.KoDcDeTrong;
+                return Vali.KoDcDeTrong;
             }
-            if (!int.TryParse(text.Text, out int result))
+            if (!int.TryParse(text, out int result))
             {
-                return Validate.KoPhaiSo;
+                return Vali.KoPhaiSo;
             }
-            if (text.Text.Length != 10)
+            if (text.Length != 10)
             {
-                return Validate.KoDuThongTin;
+                return Vali.KoDuThongTin;
             }
-            return Validate.ChinhXac;
+            return Vali.ChinhXac;
         }
-        private static bool ValidEmail(string email)
+         private static bool ValidEmail(string email)
         {
             string patern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
             Regex regex = new Regex(patern);
             return regex.IsMatch(email);
         }
-        private static bool ValidDomain(string email)
+         private static bool ValidDomain(string email)
         {
             try
             {
@@ -88,33 +89,33 @@ namespace GUI
                 return false;
             }
         }
-        static Validate CheckEmail(TextBox text)
+        public static Vali CheckEmail(string text)
         {
-            if (string.IsNullOrEmpty(text.Text))
+            if (string.IsNullOrEmpty(text))
             {
-                return Validate.KoDcDeTrong;
+                return Vali.KoDcDeTrong;
             }
-            if (!ValidEmail(text.Text))
+            if (!ValidEmail(text))
             {
-                return Validate.KoDungEmail;
+                return Vali.KoDungEmail;
             }
-            if (!ValidDomain(text.Text))
+            if (!ValidDomain(text))
             {
-                return Validate.KoDungDomain;
+                return Vali.KoDungDomain;
             }
-            return Validate.ChinhXac;
+            return Vali.ChinhXac;
         }
-        static Validate CheckMayCaiDaiDong(TextBox text)
+        public static Vali CheckMayCaiDaiDong(string text)
         {
-            if (string.IsNullOrEmpty(text.Text))
+            if (string.IsNullOrEmpty(text))
             {
-                return Validate.KoDcDeTrong;
+                return Vali.KoDcDeTrong;
             }
-            if (text.Text.Length <= 10)
+            if (text.Length <= 10)
             {
-                return Validate.KoDuThongTin;
+                return Vali.KoDuThongTin;
             }
-            return Validate.ChinhXac;
+            return Vali.ChinhXac;
         }
     }
 }

@@ -41,6 +41,10 @@
             txt_email = new TextBox();
             txt_sodienthoai = new TextBox();
             txt_ten = new TextBox();
+            lb_ersdt = new LinkLabel();
+            lb_eremail = new LinkLabel();
+            lb_erdiachi = new LinkLabel();
+            lb_erten = new LinkLabel();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtg_khachhang).BeginInit();
             panel2.SuspendLayout();
@@ -70,6 +74,10 @@
             // panel2
             // 
             panel2.BackColor = Color.White;
+            panel2.Controls.Add(lb_erdiachi);
+            panel2.Controls.Add(lb_eremail);
+            panel2.Controls.Add(lb_erten);
+            panel2.Controls.Add(lb_ersdt);
             panel2.Controls.Add(btn_them);
             panel2.Controls.Add(btn_capnhat);
             panel2.Controls.Add(label4);
@@ -170,6 +178,46 @@
             txt_ten.Size = new Size(993, 27);
             txt_ten.TabIndex = 0;
             // 
+            // lb_ersdt
+            // 
+            lb_ersdt.AutoSize = true;
+            lb_ersdt.Location = new Point(117, 114);
+            lb_ersdt.Name = "lb_ersdt";
+            lb_ersdt.Size = new Size(76, 20);
+            lb_ersdt.TabIndex = 4;
+            lb_ersdt.TabStop = true;
+            lb_ersdt.Text = "linkLabel1";
+            // 
+            // lb_eremail
+            // 
+            lb_eremail.AutoSize = true;
+            lb_eremail.Location = new Point(117, 171);
+            lb_eremail.Name = "lb_eremail";
+            lb_eremail.Size = new Size(76, 20);
+            lb_eremail.TabIndex = 4;
+            lb_eremail.TabStop = true;
+            lb_eremail.Text = "linkLabel1";
+            // 
+            // lb_erdiachi
+            // 
+            lb_erdiachi.AutoSize = true;
+            lb_erdiachi.Location = new Point(117, 387);
+            lb_erdiachi.Name = "lb_erdiachi";
+            lb_erdiachi.Size = new Size(36, 20);
+            lb_erdiachi.TabIndex = 4;
+            lb_erdiachi.TabStop = true;
+            lb_erdiachi.Text = "lasd";
+            // 
+            // lb_erten
+            // 
+            lb_erten.AutoSize = true;
+            lb_erten.Location = new Point(117, 57);
+            lb_erten.Name = "lb_erten";
+            lb_erten.Size = new Size(76, 20);
+            lb_erten.TabIndex = 4;
+            lb_erten.TabStop = true;
+            lb_erten.Text = "linkLabel1";
+            // 
             // BangKhachHang
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -203,5 +251,9 @@
         private Label label3;
         private Label label2;
         private Label label1;
+        private LinkLabel lb_erdiachi;
+        private LinkLabel lb_eremail;
+        private LinkLabel lb_erten;
+        private LinkLabel lb_ersdt;
     }
 }

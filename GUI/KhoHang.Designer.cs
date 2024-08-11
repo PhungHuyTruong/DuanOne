@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KhoHang));
             panel1 = new Panel();
             comboBox2 = new ComboBox();
@@ -39,6 +39,11 @@
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             panel2 = new Panel();
+            linkLabel5 = new LinkLabel();
+            linkLabel4 = new LinkLabel();
+            linkLabel3 = new LinkLabel();
+            linkLabel2 = new LinkLabel();
+            linkLabel1 = new LinkLabel();
             pt_hinhanh = new PictureBox();
             rb_ngungknihdoanh = new RadioButton();
             rb_kinhdoanh = new RadioButton();
@@ -115,11 +120,7 @@
             label16 = new Label();
             textBox1 = new TextBox();
             dtg_khuyenmai = new DataGridView();
-            linkLabel1 = new LinkLabel();
-            linkLabel2 = new LinkLabel();
-            linkLabel3 = new LinkLabel();
-            linkLabel4 = new LinkLabel();
-            linkLabel5 = new LinkLabel();
+            linkLabel6 = new LinkLabel();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtg_sanpham).BeginInit();
             tabControl1.SuspendLayout();
@@ -168,23 +169,23 @@
             dtg_sanpham.AllowUserToAddRows = false;
             dtg_sanpham.BackgroundColor = Color.FromArgb(244, 243, 243);
             dtg_sanpham.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.ActiveCaption;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dtg_sanpham.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.ActiveCaption;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dtg_sanpham.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dtg_sanpham.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.FromArgb(255, 252, 252);
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = Color.LightSkyBlue;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            dtg_sanpham.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(255, 252, 252);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.LightSkyBlue;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dtg_sanpham.DefaultCellStyle = dataGridViewCellStyle2;
             dtg_sanpham.GridColor = SystemColors.MenuBar;
             dtg_sanpham.Location = new Point(18, 67);
             dtg_sanpham.Name = "dtg_sanpham";
@@ -233,6 +234,7 @@
             // panel2
             // 
             panel2.BackColor = Color.White;
+            panel2.Controls.Add(linkLabel6);
             panel2.Controls.Add(linkLabel5);
             panel2.Controls.Add(linkLabel4);
             panel2.Controls.Add(linkLabel3);
@@ -280,6 +282,56 @@
             panel2.Size = new Size(550, 951);
             panel2.TabIndex = 1;
             panel2.Paint += panel2_Paint;
+            // 
+            // linkLabel5
+            // 
+            linkLabel5.AutoSize = true;
+            linkLabel5.Location = new Point(94, 498);
+            linkLabel5.Name = "linkLabel5";
+            linkLabel5.Size = new Size(76, 20);
+            linkLabel5.TabIndex = 14;
+            linkLabel5.TabStop = true;
+            linkLabel5.Text = "linkLabel1";
+            // 
+            // linkLabel4
+            // 
+            linkLabel4.AutoSize = true;
+            linkLabel4.Location = new Point(94, 443);
+            linkLabel4.Name = "linkLabel4";
+            linkLabel4.Size = new Size(76, 20);
+            linkLabel4.TabIndex = 14;
+            linkLabel4.TabStop = true;
+            linkLabel4.Text = "linkLabel1";
+            // 
+            // linkLabel3
+            // 
+            linkLabel3.AutoSize = true;
+            linkLabel3.Location = new Point(94, 390);
+            linkLabel3.Name = "linkLabel3";
+            linkLabel3.Size = new Size(76, 20);
+            linkLabel3.TabIndex = 14;
+            linkLabel3.TabStop = true;
+            linkLabel3.Text = "linkLabel1";
+            // 
+            // linkLabel2
+            // 
+            linkLabel2.AutoSize = true;
+            linkLabel2.Location = new Point(94, 335);
+            linkLabel2.Name = "linkLabel2";
+            linkLabel2.Size = new Size(76, 20);
+            linkLabel2.TabIndex = 14;
+            linkLabel2.TabStop = true;
+            linkLabel2.Text = "linkLabel1";
+            // 
+            // linkLabel1
+            // 
+            linkLabel1.AutoSize = true;
+            linkLabel1.Location = new Point(93, 278);
+            linkLabel1.Name = "linkLabel1";
+            linkLabel1.Size = new Size(76, 20);
+            linkLabel1.TabIndex = 14;
+            linkLabel1.TabStop = true;
+            linkLabel1.Text = "linkLabel1";
             // 
             // pt_hinhanh
             // 
@@ -1020,55 +1072,15 @@
             dtg_khuyenmai.TabIndex = 0;
             dtg_khuyenmai.CellContentClick += dtg_khuyenmai_CellContentClick;
             // 
-            // linkLabel1
+            // linkLabel6
             // 
-            linkLabel1.AutoSize = true;
-            linkLabel1.Location = new Point(93, 278);
-            linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new Size(76, 20);
-            linkLabel1.TabIndex = 14;
-            linkLabel1.TabStop = true;
-            linkLabel1.Text = "linkLabel1";
-            // 
-            // linkLabel2
-            // 
-            linkLabel2.AutoSize = true;
-            linkLabel2.Location = new Point(94, 335);
-            linkLabel2.Name = "linkLabel2";
-            linkLabel2.Size = new Size(76, 20);
-            linkLabel2.TabIndex = 14;
-            linkLabel2.TabStop = true;
-            linkLabel2.Text = "linkLabel1";
-            // 
-            // linkLabel3
-            // 
-            linkLabel3.AutoSize = true;
-            linkLabel3.Location = new Point(94, 390);
-            linkLabel3.Name = "linkLabel3";
-            linkLabel3.Size = new Size(76, 20);
-            linkLabel3.TabIndex = 14;
-            linkLabel3.TabStop = true;
-            linkLabel3.Text = "linkLabel1";
-            // 
-            // linkLabel4
-            // 
-            linkLabel4.AutoSize = true;
-            linkLabel4.Location = new Point(94, 443);
-            linkLabel4.Name = "linkLabel4";
-            linkLabel4.Size = new Size(76, 20);
-            linkLabel4.TabIndex = 14;
-            linkLabel4.TabStop = true;
-            linkLabel4.Text = "linkLabel1";
-            // 
-            // linkLabel5
-            // 
-            linkLabel5.AutoSize = true;
-            linkLabel5.Location = new Point(94, 498);
-            linkLabel5.Name = "linkLabel5";
-            linkLabel5.Size = new Size(76, 20);
-            linkLabel5.TabIndex = 14;
-            linkLabel5.TabStop = true;
-            linkLabel5.Text = "linkLabel1";
+            linkLabel6.AutoSize = true;
+            linkLabel6.Location = new Point(94, 837);
+            linkLabel6.Name = "linkLabel6";
+            linkLabel6.Size = new Size(76, 20);
+            linkLabel6.TabIndex = 14;
+            linkLabel6.TabStop = true;
+            linkLabel6.Text = "linkLabel1";
             // 
             // KhoHang
             // 
@@ -1190,5 +1202,6 @@
         private LinkLabel linkLabel3;
         private LinkLabel linkLabel2;
         private LinkLabel linkLabel1;
+        private LinkLabel linkLabel6;
     }
 }
