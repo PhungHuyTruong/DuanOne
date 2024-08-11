@@ -6,6 +6,7 @@ using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Globalization;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace GUI
@@ -21,7 +22,9 @@ namespace GUI
             KoDungEmail,
             KoDungDomain,
             KoPhaiSo,
-            KoChinhXac
+            KoChinhXac,
+            KoDcGhiKyTuDacBiet,
+            ItTien
 
         }
         public static Vali CheckTen(string text)
@@ -36,6 +39,18 @@ namespace GUI
             }
             return Vali.ChinhXac;
         }
+        public static Vali CheckMayCaiNgan(string text)
+        {
+            if (string.IsNullOrEmpty(text))
+            {
+                return Vali.KoDcDeTrong;
+            }
+            if (text.Length <= 2)
+            {
+                return Vali.KoDuThongTin;
+            }
+            return Vali.ChinhXac;
+        }
         public static Vali CheckSo(string text)
         {
             if (string.IsNullOrEmpty(text))
@@ -45,10 +60,6 @@ namespace GUI
             if(!int.TryParse(text,out int result))
             {
                 return Vali.KoPhaiSo;
-            }
-            if(text.Length < 1)
-            {
-                return Vali.KoDuThongTin;
             }
             return Vali.ChinhXac;
         }
@@ -114,6 +125,44 @@ namespace GUI
             if (text.Length <= 10)
             {
                 return Vali.KoDuThongTin;
+            }
+            return Vali.ChinhXac;
+        }
+        private  static bool CheckKyTuDacBiet(string input)
+        {
+            string pattern = @"[!@#$%^&*()_+{}\[\]:;""'<>,.?/\\|`~]";
+            return Regex.IsMatch(input, pattern);
+        }
+        public static Vali CheckBarcode(string text)
+        {
+            if (string.IsNullOrEmpty(text))
+            {
+                return Vali.KoDcDeTrong;
+            }
+            if (text.Trim().Length != 8)
+            {
+                return Vali.KoDuThongTin;
+            }
+            if (CheckKyTuDacBiet(text))
+            {
+                return Vali.KoDcGhiKyTuDacBiet;
+            }
+            return Vali.ChinhXac;
+        }
+        public static Vali CheckGiaTien(string text)
+        {
+
+            if (string.IsNullOrEmpty(text))
+            {
+                return Vali.KoDcDeTrong;
+            }
+            if (!int.TryParse(text, out int result))
+            {
+                return Vali.KoPhaiSo;
+            }
+            if(result < 10000)
+            {
+                return Vali.ItTien;
             }
             return Vali.ChinhXac;
         }

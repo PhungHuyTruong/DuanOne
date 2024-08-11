@@ -39,11 +39,13 @@
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             panel2 = new Panel();
-            linkLabel5 = new LinkLabel();
-            linkLabel4 = new LinkLabel();
-            linkLabel3 = new LinkLabel();
-            linkLabel2 = new LinkLabel();
-            linkLabel1 = new LinkLabel();
+            lb_ersoluong = new LinkLabel();
+            lb_ergia = new LinkLabel();
+            lb_ermota = new LinkLabel();
+            lb_erbarcode = new LinkLabel();
+            lb_erkieugiay = new LinkLabel();
+            lb_erchatlieu = new LinkLabel();
+            lb_erten = new LinkLabel();
             pt_hinhanh = new PictureBox();
             rb_ngungknihdoanh = new RadioButton();
             rb_kinhdoanh = new RadioButton();
@@ -120,7 +122,6 @@
             label16 = new Label();
             textBox1 = new TextBox();
             dtg_khuyenmai = new DataGridView();
-            linkLabel6 = new LinkLabel();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtg_sanpham).BeginInit();
             tabControl1.SuspendLayout();
@@ -234,12 +235,13 @@
             // panel2
             // 
             panel2.BackColor = Color.White;
-            panel2.Controls.Add(linkLabel6);
-            panel2.Controls.Add(linkLabel5);
-            panel2.Controls.Add(linkLabel4);
-            panel2.Controls.Add(linkLabel3);
-            panel2.Controls.Add(linkLabel2);
-            panel2.Controls.Add(linkLabel1);
+            panel2.Controls.Add(lb_ersoluong);
+            panel2.Controls.Add(lb_ergia);
+            panel2.Controls.Add(lb_ermota);
+            panel2.Controls.Add(lb_erbarcode);
+            panel2.Controls.Add(lb_erkieugiay);
+            panel2.Controls.Add(lb_erchatlieu);
+            panel2.Controls.Add(lb_erten);
             panel2.Controls.Add(pt_hinhanh);
             panel2.Controls.Add(rb_ngungknihdoanh);
             panel2.Controls.Add(rb_kinhdoanh);
@@ -283,55 +285,68 @@
             panel2.TabIndex = 1;
             panel2.Paint += panel2_Paint;
             // 
-            // linkLabel5
+            // lb_ersoluong
             // 
-            linkLabel5.AutoSize = true;
-            linkLabel5.Location = new Point(94, 498);
-            linkLabel5.Name = "linkLabel5";
-            linkLabel5.Size = new Size(76, 20);
-            linkLabel5.TabIndex = 14;
-            linkLabel5.TabStop = true;
-            linkLabel5.Text = "linkLabel1";
+            lb_ersoluong.AutoSize = true;
+            lb_ersoluong.LinkColor = Color.Red;
+            lb_ersoluong.Location = new Point(376, 892);
+            lb_ersoluong.Name = "lb_ersoluong";
+            lb_ersoluong.Size = new Size(0, 20);
+            lb_ersoluong.TabIndex = 14;
             // 
-            // linkLabel4
+            // lb_ergia
             // 
-            linkLabel4.AutoSize = true;
-            linkLabel4.Location = new Point(94, 443);
-            linkLabel4.Name = "linkLabel4";
-            linkLabel4.Size = new Size(76, 20);
-            linkLabel4.TabIndex = 14;
-            linkLabel4.TabStop = true;
-            linkLabel4.Text = "linkLabel1";
+            lb_ergia.AutoSize = true;
+            lb_ergia.LinkColor = Color.Red;
+            lb_ergia.Location = new Point(83, 892);
+            lb_ergia.Name = "lb_ergia";
+            lb_ergia.Size = new Size(0, 20);
+            lb_ergia.TabIndex = 14;
             // 
-            // linkLabel3
+            // lb_ermota
             // 
-            linkLabel3.AutoSize = true;
-            linkLabel3.Location = new Point(94, 390);
-            linkLabel3.Name = "linkLabel3";
-            linkLabel3.Size = new Size(76, 20);
-            linkLabel3.TabIndex = 14;
-            linkLabel3.TabStop = true;
-            linkLabel3.Text = "linkLabel1";
+            lb_ermota.AutoSize = true;
+            lb_ermota.LinkColor = Color.Red;
+            lb_ermota.Location = new Point(95, 825);
+            lb_ermota.Name = "lb_ermota";
+            lb_ermota.Size = new Size(0, 20);
+            lb_ermota.TabIndex = 14;
             // 
-            // linkLabel2
+            // lb_erbarcode
             // 
-            linkLabel2.AutoSize = true;
-            linkLabel2.Location = new Point(94, 335);
-            linkLabel2.Name = "linkLabel2";
-            linkLabel2.Size = new Size(76, 20);
-            linkLabel2.TabIndex = 14;
-            linkLabel2.TabStop = true;
-            linkLabel2.Text = "linkLabel1";
+            lb_erbarcode.AutoSize = true;
+            lb_erbarcode.LinkColor = Color.Red;
+            lb_erbarcode.Location = new Point(94, 498);
+            lb_erbarcode.Name = "lb_erbarcode";
+            lb_erbarcode.Size = new Size(0, 20);
+            lb_erbarcode.TabIndex = 14;
             // 
-            // linkLabel1
+            // lb_erkieugiay
             // 
-            linkLabel1.AutoSize = true;
-            linkLabel1.Location = new Point(93, 278);
-            linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new Size(76, 20);
-            linkLabel1.TabIndex = 14;
-            linkLabel1.TabStop = true;
-            linkLabel1.Text = "linkLabel1";
+            lb_erkieugiay.AutoSize = true;
+            lb_erkieugiay.LinkColor = Color.Red;
+            lb_erkieugiay.Location = new Point(94, 443);
+            lb_erkieugiay.Name = "lb_erkieugiay";
+            lb_erkieugiay.Size = new Size(0, 20);
+            lb_erkieugiay.TabIndex = 14;
+            // 
+            // lb_erchatlieu
+            // 
+            lb_erchatlieu.AutoSize = true;
+            lb_erchatlieu.LinkColor = Color.Red;
+            lb_erchatlieu.Location = new Point(94, 390);
+            lb_erchatlieu.Name = "lb_erchatlieu";
+            lb_erchatlieu.Size = new Size(0, 20);
+            lb_erchatlieu.TabIndex = 14;
+            // 
+            // lb_erten
+            // 
+            lb_erten.AutoSize = true;
+            lb_erten.LinkColor = Color.Red;
+            lb_erten.Location = new Point(93, 278);
+            lb_erten.Name = "lb_erten";
+            lb_erten.Size = new Size(0, 20);
+            lb_erten.TabIndex = 14;
             // 
             // pt_hinhanh
             // 
@@ -368,7 +383,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(406, 536);
+            label9.Location = new Point(406, 528);
             label9.Name = "label9";
             label9.Size = new Size(59, 20);
             label9.TabIndex = 12;
@@ -377,7 +392,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(248, 536);
+            label8.Location = new Point(248, 528);
             label8.Name = "label8";
             label8.Size = new Size(40, 20);
             label8.TabIndex = 12;
@@ -386,7 +401,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(94, 536);
+            label7.Location = new Point(94, 528);
             label7.Name = "label7";
             label7.Size = new Size(68, 20);
             label7.TabIndex = 12;
@@ -395,7 +410,7 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(204, 611);
+            label11.Location = new Point(205, 599);
             label11.Name = "label11";
             label11.Size = new Size(100, 20);
             label11.TabIndex = 12;
@@ -404,7 +419,7 @@
             // label15
             // 
             label15.AutoSize = true;
-            label15.Location = new Point(319, 889);
+            label15.Location = new Point(319, 868);
             label15.Name = "label15";
             label15.Size = new Size(75, 20);
             label15.TabIndex = 12;
@@ -413,7 +428,7 @@
             // label14
             // 
             label14.AutoSize = true;
-            label14.Location = new Point(16, 889);
+            label14.Location = new Point(17, 868);
             label14.Name = "label14";
             label14.Size = new Size(34, 20);
             label14.TabIndex = 12;
@@ -431,7 +446,7 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(94, 611);
+            label10.Location = new Point(95, 599);
             label10.Name = "label10";
             label10.Size = new Size(47, 20);
             label10.TabIndex = 12;
@@ -440,7 +455,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(17, 568);
+            label6.Location = new Point(17, 560);
             label6.Name = "label6";
             label6.Size = new Size(62, 20);
             label6.TabIndex = 12;
@@ -467,7 +482,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(16, 699);
+            label3.Location = new Point(17, 687);
             label3.Name = "label3";
             label3.Size = new Size(54, 20);
             label3.TabIndex = 12;
@@ -494,7 +509,7 @@
             // txt_tengiamgia
             // 
             txt_tengiamgia.BackColor = Color.White;
-            txt_tengiamgia.Location = new Point(204, 643);
+            txt_tengiamgia.Location = new Point(205, 631);
             txt_tengiamgia.Name = "txt_tengiamgia";
             txt_tengiamgia.ReadOnly = true;
             txt_tengiamgia.Size = new Size(334, 27);
@@ -503,7 +518,7 @@
             // txt_mucgiam
             // 
             txt_mucgiam.BackColor = Color.White;
-            txt_mucgiam.Location = new Point(94, 643);
+            txt_mucgiam.Location = new Point(95, 631);
             txt_mucgiam.Name = "txt_mucgiam";
             txt_mucgiam.ReadOnly = true;
             txt_mucgiam.Size = new Size(89, 27);
@@ -512,7 +527,7 @@
             // cbb_kichco
             // 
             cbb_kichco.FormattingEnabled = true;
-            cbb_kichco.Location = new Point(406, 568);
+            cbb_kichco.Location = new Point(406, 560);
             cbb_kichco.Name = "cbb_kichco";
             cbb_kichco.Size = new Size(132, 28);
             cbb_kichco.TabIndex = 10;
@@ -520,7 +535,7 @@
             // cbb_gioitinh
             // 
             cbb_gioitinh.FormattingEnabled = true;
-            cbb_gioitinh.Location = new Point(248, 568);
+            cbb_gioitinh.Location = new Point(248, 560);
             cbb_gioitinh.Name = "cbb_gioitinh";
             cbb_gioitinh.Size = new Size(140, 28);
             cbb_gioitinh.TabIndex = 10;
@@ -536,7 +551,7 @@
             // 
             // txt_soluong
             // 
-            txt_soluong.Location = new Point(397, 886);
+            txt_soluong.Location = new Point(399, 865);
             txt_soluong.Name = "txt_soluong";
             txt_soluong.Size = new Size(140, 27);
             txt_soluong.TabIndex = 9;
@@ -544,21 +559,21 @@
             // cbb_mausac
             // 
             cbb_mausac.FormattingEnabled = true;
-            cbb_mausac.Location = new Point(94, 568);
+            cbb_mausac.Location = new Point(94, 560);
             cbb_mausac.Name = "cbb_mausac";
             cbb_mausac.Size = new Size(140, 28);
             cbb_mausac.TabIndex = 10;
             // 
             // txt_gia
             // 
-            txt_gia.Location = new Point(94, 886);
+            txt_gia.Location = new Point(95, 865);
             txt_gia.Name = "txt_gia";
             txt_gia.Size = new Size(140, 27);
             txt_gia.TabIndex = 9;
             // 
             // txt_mota
             // 
-            txt_mota.Location = new Point(93, 696);
+            txt_mota.Location = new Point(94, 684);
             txt_mota.Multiline = true;
             txt_mota.Name = "txt_mota";
             txt_mota.Size = new Size(444, 138);
@@ -662,6 +677,7 @@
             btn_clear.Text = "       LÀM MỚI";
             btn_clear.TextAlign = ContentAlignment.MiddleLeft;
             btn_clear.UseVisualStyleBackColor = true;
+            btn_clear.Click += btn_clear_Click;
             // 
             // tabPage2
             // 
@@ -1072,16 +1088,6 @@
             dtg_khuyenmai.TabIndex = 0;
             dtg_khuyenmai.CellContentClick += dtg_khuyenmai_CellContentClick;
             // 
-            // linkLabel6
-            // 
-            linkLabel6.AutoSize = true;
-            linkLabel6.Location = new Point(94, 837);
-            linkLabel6.Name = "linkLabel6";
-            linkLabel6.Size = new Size(76, 20);
-            linkLabel6.TabIndex = 14;
-            linkLabel6.TabStop = true;
-            linkLabel6.Text = "linkLabel1";
-            // 
             // KhoHang
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -1197,11 +1203,12 @@
         private Label label27;
         private Button btn_themkhuyenmai;
         private Button button2;
-        private LinkLabel linkLabel5;
-        private LinkLabel linkLabel4;
-        private LinkLabel linkLabel3;
-        private LinkLabel linkLabel2;
-        private LinkLabel linkLabel1;
-        private LinkLabel linkLabel6;
+        private LinkLabel lb_erbarcode;
+        private LinkLabel lb_erkieugiay;
+        private LinkLabel lb_erten;
+        private LinkLabel lb_ermota;
+        private LinkLabel lb_erchatlieu;
+        private LinkLabel lb_ersoluong;
+        private LinkLabel lb_ergia;
     }
 }

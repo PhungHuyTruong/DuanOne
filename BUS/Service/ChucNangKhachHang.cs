@@ -17,9 +17,9 @@ namespace BUS.Service
             _repo = repo;
         }
 
-        public void AddKhachHang(KhachHang kh)
+        public bool AddKhachHang(KhachHang kh)
         {
-            _repo.AddKhachHang(kh);
+            return _repo.AddKhachHang(kh);
         }
 
         public async Task<IEnumerable<KhachHang>> GetAllKHachHang()
@@ -32,9 +32,9 @@ namespace BUS.Service
             return _repo.GetKhachHang(sdt);
         }
 
-        public void UpdateKhachHang(KhachHang kh)
+        public bool UpdateKhachHang(KhachHang kh)
         {
-            _repo.UpdateKhachHang(kh);
+            return _repo.UpdateKhachHang(kh);
         }
     }
 }

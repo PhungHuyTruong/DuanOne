@@ -229,75 +229,84 @@ namespace GUI
 
         private void btn_add_Click(object sender, EventArgs e)
         {
-            var ten = txt_ten.Text;
-            var hang = Convert.ToInt32(cbb_hangsanpham.SelectedValue);
-            var soluong = Convert.ToInt32(txt_soluong.Text);
-            var mota = txt_mota.Text;
-            var chatlieu = txt_chatlieu.Text;
-            var kieugiay = txt_kieugiay.Text;
-            var gioitinh = Convert.ToInt32(cbb_gioitinh.SelectedValue);
-            var kichco = Convert.ToInt32(cbb_kichco.SelectedValue);
-            var mausac = Convert.ToInt32(cbb_mausac.SelectedValue);
-            var barcode = txt_barcode.Text;
-            var gia = Convert.ToDecimal(txt_gia.Text);
-            var hinhanh = _currentpic;
-
-            if (!_services.CreateSanPham(ten, hang, soluong, mota, chatlieu, kieugiay, gioitinh, kichco, mausac, barcode, gia, hinhanh))
+            if (CheckThongTin())
             {
-                MessageBox.Show("Bị Trùng Thông Tin");
-                return;
-            }
+                var ten = txt_ten.Text;
+                var hang = Convert.ToInt32(cbb_hangsanpham.SelectedValue);
+                var soluong = Convert.ToInt32(txt_soluong.Text);
+                var mota = txt_mota.Text;
+                var chatlieu = txt_chatlieu.Text;
+                var kieugiay = txt_kieugiay.Text;
+                var gioitinh = Convert.ToInt32(cbb_gioitinh.SelectedValue);
+                var kichco = Convert.ToInt32(cbb_kichco.SelectedValue);
+                var mausac = Convert.ToInt32(cbb_mausac.SelectedValue);
+                var barcode = txt_barcode.Text;
+                var gia = Convert.ToDecimal(txt_gia.Text);
+                var hinhanh = _currentpic;
 
-            LoadDataGrid(_services.GetAllSanPham());
+                if (!_services.CreateSanPham(ten, hang, soluong, mota, chatlieu, kieugiay, gioitinh, kichco, mausac, barcode, gia, hinhanh))
+                {
+                    MessageBox.Show("Bị Trùng Thông Tin");
+                    return;
+                }
+
+                LoadDataGrid(_services.GetAllSanPham());
+                Refresh();
+            }
 
         }
 
         private void btn_update_Click(object sender, EventArgs e)
         {
-            var id = seletedid;
-            var ten = txt_ten.Text;
-            var hang = Convert.ToInt32(cbb_hangsanpham.SelectedValue);
-            var soluong = Convert.ToInt32(txt_soluong.Text);
-            var mota = txt_mota.Text;
-            var chatlieu = txt_chatlieu.Text;
-            var kieugiay = txt_kieugiay.Text;
-            var gioitinh = Convert.ToInt32(cbb_gioitinh.SelectedValue);
-            var kichco = Convert.ToInt32(cbb_kichco.SelectedValue);
-            var mausac = Convert.ToInt32(cbb_mausac.SelectedValue);
-            var barcode = txt_barcode.Text;
-            var gia = Convert.ToDecimal(txt_gia.Text);
+            if (CheckThongTin())
+            {
+                var id = seletedid;
+                var ten = txt_ten.Text;
+                var hang = Convert.ToInt32(cbb_hangsanpham.SelectedValue);
+                var soluong = Convert.ToInt32(txt_soluong.Text);
+                var mota = txt_mota.Text;
+                var chatlieu = txt_chatlieu.Text;
+                var kieugiay = txt_kieugiay.Text;
+                var gioitinh = Convert.ToInt32(cbb_gioitinh.SelectedValue);
+                var kichco = Convert.ToInt32(cbb_kichco.SelectedValue);
+                var mausac = Convert.ToInt32(cbb_mausac.SelectedValue);
+                var barcode = txt_barcode.Text;
+                var gia = Convert.ToDecimal(txt_gia.Text);
 
 
-            var sanPham = _services.GetSanPhamByID(id);
-            var oldHinhAnh = sanPham.HinhAnh;
-            var hinhanh = oldHinhAnh;
-            if (_currentpic != null && _currentpic != oldHinhAnh)
-            {
-                FileManager.SPPicManager.DeletePic(oldHinhAnh);
-                hinhanh = _currentpic;
-            }
-            else if (_currentpic == null && oldHinhAnh != null)
-            {
-                FileManager.SPPicManager.DeletePic(oldHinhAnh);
-                hinhanh = null;
+                var sanPham = _services.GetSanPhamByID(id);
+                var oldHinhAnh = sanPham.HinhAnh;
+                var hinhanh = oldHinhAnh;
+                if (_currentpic != null && _currentpic != oldHinhAnh)
+                {
+                    FileManager.SPPicManager.DeletePic(oldHinhAnh);
+                    hinhanh = _currentpic;
+                }
+                else if (_currentpic == null && oldHinhAnh != null)
+                {
+                    FileManager.SPPicManager.DeletePic(oldHinhAnh);
+                    hinhanh = null;
+                }
+
+                var trangthai = false;
+                if (rb_kinhdoanh.Checked == true)
+                {
+                    trangthai = true;
+                }
+                else if (rb_ngungknihdoanh.Checked == true)
+                {
+                    trangthai = false;
+                }
+
+                if (!_services.UpdateSanPham(id, ten, hang, soluong, mota, chatlieu, kieugiay, gioitinh, kichco, mausac, barcode, gia, trangthai, hinhanh))
+                {
+                    MessageBox.Show("Bị Trùng Thông Tin");
+                    return;
+                }
+                LoadDataGrid(_services.GetAllSanPham());
+                Refresh();
             }
 
-            var trangthai = false;
-            if (rb_kinhdoanh.Checked == true)
-            {
-                trangthai = true;
-            }
-            else if (rb_ngungknihdoanh.Checked == true)
-            {
-                trangthai = false;
-            }
-
-            if (!_services.UpdateSanPham(id, ten, hang, soluong, mota, chatlieu, kieugiay, gioitinh, kichco, mausac, barcode, gia, trangthai, hinhanh))
-            {
-                MessageBox.Show("Bị Trùng Thông Tin");
-                return;
-            }
-            LoadDataGrid(_services.GetAllSanPham());
         }
 
         private void btn_uploadanh_Click(object sender, EventArgs e)
@@ -453,6 +462,166 @@ namespace GUI
                 string filter = cbb_boolkhuyemai.SelectedValue.ToString();
                 LoadDataSPKhuyenMai(_services.GetAllSanPham(), filter);
             }
+        }
+        private bool CheckThongTin()
+        {
+            bool isValid = true;
+            var ten = ValidateText.CheckTen(txt_ten.Text);
+            switch (ten)
+            {
+                case ValidateText.Vali.KoDuThongTin:
+                    lb_erten.Text = "Hãy Nhập Nhiều Hơn 6 Chữ";
+                    isValid = false;
+                    break;
+                case ValidateText.Vali.KoDcDeTrong:
+                    lb_erten.Text = "Không Được Để Trống Thông Tin";
+                    isValid = false;
+                    break;
+                case ValidateText.Vali.ChinhXac:
+                    lb_erten.Text = "";
+                    break;
+                default:
+                    isValid = false;
+                    break;
+            }
+            var chatlieu = ValidateText.CheckMayCaiNgan(txt_chatlieu.Text);
+            switch (chatlieu)
+            {
+                case ValidateText.Vali.KoDuThongTin:
+                    lb_erchatlieu.Text = "Hãy Nhập Nhiều Hơn 3 Chữ";
+                    isValid = false;
+                    break;
+                case ValidateText.Vali.KoDcDeTrong:
+                    lb_erchatlieu.Text = "Không Được Để Trống Thông Tin";
+                    isValid = false;
+                    break;
+                case ValidateText.Vali.ChinhXac:
+                    lb_erchatlieu.Text = "";
+                    break;
+                default:
+                    isValid = false;
+                    break;
+            }
+            var kieugiay = ValidateText.CheckMayCaiNgan(txt_kieugiay.Text);
+            switch (kieugiay)
+            {
+                case ValidateText.Vali.KoDuThongTin:
+                    lb_erkieugiay.Text = "Hãy Nhập Nhiều Hơn 3 Chữ";
+                    isValid = false;
+                    break;
+                case ValidateText.Vali.KoDcDeTrong:
+                    lb_erkieugiay.Text = "Không Được Để Trống Thông Tin";
+                    isValid = false;
+                    break;
+                case ValidateText.Vali.ChinhXac:
+                    lb_erkieugiay.Text = "";
+                    break;
+                default:
+                    isValid = false;
+                    break;
+            }
+            var barcode = ValidateText.CheckBarcode(txt_barcode.Text);
+            switch (barcode)
+            {
+                case ValidateText.Vali.KoDuThongTin:
+                    lb_erbarcode.Text = "Hãy Nhập 8 Chữ";
+                    isValid = false;
+                    break;
+                case ValidateText.Vali.KoDcDeTrong:
+                    lb_erbarcode.Text = "Không Được Để Trống Thông Tin";
+                    isValid = false;
+                    break;
+                case ValidateText.Vali.KoDcGhiKyTuDacBiet:
+                    lb_erbarcode.Text = "Không Được Ghi Ký Tự Đặc Biệt";
+                    isValid = false;
+                    break;
+                case ValidateText.Vali.ChinhXac:
+                    lb_erbarcode.Text = "";
+                    break;
+                default:
+                    isValid = false;
+                    break;
+            }
+            var mota = ValidateText.CheckMayCaiDaiDong(txt_mota.Text);
+            switch (mota)
+            {
+                case ValidateText.Vali.KoDcDeTrong:
+                    lb_ermota.Text = "Không Được Để Trống Thông Tin";
+                    isValid = false;
+                    break;
+                case ValidateText.Vali.KoDuThongTin:
+                    lb_ermota.Text = "Hãy Điền Nhiều Hơn 10 Ký Tự";
+                    isValid = false;
+                    break;
+                case ValidateText.Vali.ChinhXac:
+                    lb_ermota.Text = "";
+                    break;
+                default:
+                    isValid = false;
+                    break;
+            }
+            var giatien = ValidateText.CheckGiaTien(txt_gia.Text);
+            switch (giatien)
+            {
+                case ValidateText.Vali.KoDcDeTrong:
+                    lb_ergia.Text = "Không Được Để Trống Thông Tin";
+                    isValid = false;
+                    break;
+                case ValidateText.Vali.KoPhaiSo:
+                    lb_ergia.Text = "Hãy Nhập Số";
+                    isValid = false;
+                    break;
+                case ValidateText.Vali.ItTien:
+                    lb_ergia.Text = "Hãy Nhập Số Tiền Giá Trị Cao Hơn 10.000đ";
+                    isValid = false;
+                    break;
+                case ValidateText.Vali.ChinhXac:
+                    lb_ergia.Text = "";
+                    break;
+                default:
+                    isValid = false;
+                    break;
+            }
+            var soluong = ValidateText.CheckSo(txt_soluong.Text);
+            switch (soluong)
+            {
+                case ValidateText.Vali.KoDcDeTrong:
+                    lb_ersoluong.Text = "Không Được Để Trống";
+                    isValid = false;
+                    break;
+                case ValidateText.Vali.KoPhaiSo:
+                    lb_ersoluong.Text = "Hãy Nhập Số";
+                    isValid = false;
+                    break;
+                case ValidateText.Vali.ChinhXac:
+                    lb_ersoluong.Text = "";
+                    break;
+                default:
+                    isValid = false;
+                    break;
+            }
+            return isValid;
+
+
+        }
+
+        private void btn_clear_Click(object sender, EventArgs e)
+        {
+            Refresh();
+        }
+        public void Refresh()
+        {
+            txt_ten.Text = null;
+            txt_chatlieu.Text = null;
+            txt_kieugiay.Text = null;
+            txt_barcode.Text = null;
+            txt_mucgiam.Text = null;
+            txt_tengiamgia.Text = null;
+            txt_mota.Text = null;
+            txt_gia.Text =null;
+            txt_soluong.Text = null;
+            _currentpic = null;
+            seletedid = -1;
         }
     }
 }

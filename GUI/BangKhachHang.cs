@@ -55,22 +55,31 @@ namespace GUI
                     Email = txt_email.Text,
                     DiaChi = txt_diachi.Text,
                 };
-                _services.AddKhachHang(kh);
+                if (!_services.AddKhachHang(kh)){
+                    MessageBox.Show("Trùng Thông Tin");
+                };
                 LoadAsync();
             }
         }
         private void btn_capnhat_Click(object sender, EventArgs e)
         {
-            KhachHang kh = new KhachHang
+            if (CheckText()) 
             {
-                IdKhachHang = selectedid,
-                Ten = txt_ten.Text,
-                SoDienThoai = txt_sodienthoai.Text,
-                Email = txt_email.Text,
-                DiaChi = txt_diachi.Text,
-            };
-            _services.UpdateKhachHang(kh);
-            LoadAsync();
+                KhachHang kh = new KhachHang
+                {
+                    IdKhachHang = selectedid,
+                    Ten = txt_ten.Text,
+                    SoDienThoai = txt_sodienthoai.Text,
+                    Email = txt_email.Text,
+                    DiaChi = txt_diachi.Text,
+                };
+                if (!_services.UpdateKhachHang(kh))
+                {
+                    MessageBox.Show("Trùng Thông Tin");
+                }
+                LoadAsync();
+            }
+           
         }
 
         private void dtg_khachhang_CellClick(object sender, DataGridViewCellEventArgs e)

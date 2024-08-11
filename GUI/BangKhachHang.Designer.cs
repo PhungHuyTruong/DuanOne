@@ -31,6 +31,10 @@
             panel1 = new Panel();
             dtg_khachhang = new DataGridView();
             panel2 = new Panel();
+            lb_erdiachi = new LinkLabel();
+            lb_eremail = new LinkLabel();
+            lb_erten = new LinkLabel();
+            lb_ersdt = new LinkLabel();
             btn_them = new Button();
             btn_capnhat = new Button();
             label4 = new Label();
@@ -41,10 +45,6 @@
             txt_email = new TextBox();
             txt_sodienthoai = new TextBox();
             txt_ten = new TextBox();
-            lb_ersdt = new LinkLabel();
-            lb_eremail = new LinkLabel();
-            lb_erdiachi = new LinkLabel();
-            lb_erten = new LinkLabel();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtg_khachhang).BeginInit();
             panel2.SuspendLayout();
@@ -92,6 +92,42 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(1137, 467);
             panel2.TabIndex = 1;
+            // 
+            // lb_erdiachi
+            // 
+            lb_erdiachi.AutoSize = true;
+            lb_erdiachi.LinkColor = Color.Red;
+            lb_erdiachi.Location = new Point(117, 387);
+            lb_erdiachi.Name = "lb_erdiachi";
+            lb_erdiachi.Size = new Size(0, 20);
+            lb_erdiachi.TabIndex = 4;
+            // 
+            // lb_eremail
+            // 
+            lb_eremail.AutoSize = true;
+            lb_eremail.LinkColor = Color.Red;
+            lb_eremail.Location = new Point(117, 171);
+            lb_eremail.Name = "lb_eremail";
+            lb_eremail.Size = new Size(0, 20);
+            lb_eremail.TabIndex = 4;
+            // 
+            // lb_erten
+            // 
+            lb_erten.AutoSize = true;
+            lb_erten.LinkColor = Color.Red;
+            lb_erten.Location = new Point(117, 57);
+            lb_erten.Name = "lb_erten";
+            lb_erten.Size = new Size(0, 20);
+            lb_erten.TabIndex = 4;
+            // 
+            // lb_ersdt
+            // 
+            lb_ersdt.AutoSize = true;
+            lb_ersdt.LinkColor = Color.Red;
+            lb_ersdt.Location = new Point(117, 114);
+            lb_ersdt.Name = "lb_ersdt";
+            lb_ersdt.Size = new Size(0, 20);
+            lb_ersdt.TabIndex = 4;
             // 
             // btn_them
             // 
@@ -177,46 +213,6 @@
             txt_ten.Name = "txt_ten";
             txt_ten.Size = new Size(993, 27);
             txt_ten.TabIndex = 0;
-            // 
-            // lb_ersdt
-            // 
-            lb_ersdt.AutoSize = true;
-            lb_ersdt.Location = new Point(117, 114);
-            lb_ersdt.Name = "lb_ersdt";
-            lb_ersdt.Size = new Size(76, 20);
-            lb_ersdt.TabIndex = 4;
-            lb_ersdt.TabStop = true;
-            lb_ersdt.Text = "linkLabel1";
-            // 
-            // lb_eremail
-            // 
-            lb_eremail.AutoSize = true;
-            lb_eremail.Location = new Point(117, 171);
-            lb_eremail.Name = "lb_eremail";
-            lb_eremail.Size = new Size(76, 20);
-            lb_eremail.TabIndex = 4;
-            lb_eremail.TabStop = true;
-            lb_eremail.Text = "linkLabel1";
-            // 
-            // lb_erdiachi
-            // 
-            lb_erdiachi.AutoSize = true;
-            lb_erdiachi.Location = new Point(117, 387);
-            lb_erdiachi.Name = "lb_erdiachi";
-            lb_erdiachi.Size = new Size(36, 20);
-            lb_erdiachi.TabIndex = 4;
-            lb_erdiachi.TabStop = true;
-            lb_erdiachi.Text = "lasd";
-            // 
-            // lb_erten
-            // 
-            lb_erten.AutoSize = true;
-            lb_erten.Location = new Point(117, 57);
-            lb_erten.Name = "lb_erten";
-            lb_erten.Size = new Size(76, 20);
-            lb_erten.TabIndex = 4;
-            lb_erten.TabStop = true;
-            lb_erten.Text = "linkLabel1";
             // 
             // BangKhachHang
             // 

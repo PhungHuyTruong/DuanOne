@@ -17,10 +17,19 @@ namespace DAL.Repo
             _context = context;
         }
 
-        public void AddKhachHang(KhachHang kh)
+        public bool AddKhachHang(KhachHang kh)
         {
-            _context.KhachHangs.Add(kh);
-            _context.SaveChanges();
+            if (ChecKThongTinTrung(kh.Email, kh.SoDienThoai))
+            {
+                _context.KhachHangs.Add(kh);
+                int change = _context.SaveChanges();
+                return change > 0;
+            }
+            else 
+            {
+                return false;
+            }
+           
         }
 
         public async Task<IEnumerable<KhachHang>> GetAllKHachHang()
@@ -33,16 +42,38 @@ namespace DAL.Repo
             return _context.KhachHangs.FirstOrDefault(kh => kh.SoDienThoai == sdt);
         }
 
-        public void UpdateKhachHang(KhachHang kh)
+        public bool UpdateKhachHang(KhachHang kh)
         {
-            var khach = _context.KhachHangs.Find(kh.IdKhachHang);
-            khach.Ten = kh.Ten;
-            khach.SoDienThoai = kh.SoDienThoai;
-            khach.DiaChi = kh.DiaChi;
-            khach.Email = kh.Email;
+            if (ChecKThongTinTrung(kh.Email, kh.SoDienThoai)) 
+            {
+                var khach = _context.KhachHangs.Find(kh.IdKhachHang);
+                khach.Ten = kh.Ten;
+                khach.SoDienThoai = kh.SoDienThoai;
+                khach.DiaChi = kh.DiaChi;
+                khach.Email = kh.Email;
 
-            _context.KhachHangs.Update(khach);
-            _context.SaveChanges();
+                _context.KhachHangs.Update(khach);
+                int change = _context.SaveChanges();
+                return change > 0;
+            }
+            else
+            {
+                return false;
+            }
+        
         }
+        private bool ChecKThongTinTrung(string email,string sdt)
+        {
+            var khach = _context.KhachHangs.ToList();
+            foreach (var item    in khach)
+            {
+                if (item.Email == email || item.SoDienThoai == sdt)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
     }
 }

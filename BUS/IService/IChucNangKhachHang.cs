@@ -10,8 +10,8 @@ namespace BUS.IService
     public interface IChucNangKhachHang
     {
         Task<IEnumerable<KhachHang>> GetAllKHachHang();
-        void AddKhachHang(KhachHang kh);
-        void UpdateKhachHang(KhachHang kh);
+        bool AddKhachHang(KhachHang kh);
+        bool UpdateKhachHang(KhachHang kh);
         KhachHang GetKhachHang(string sdt);
     }
 }
