@@ -239,8 +239,15 @@ namespace GUI
             {
                 int chitiet = Convert.ToInt32(dtg_xesanpham.Rows[e.RowIndex].Cells["IdChiTiet"].Value);
                 int sp = Convert.ToInt32(dtg_xesanpham.Rows[e.RowIndex].Cells["IdSanPham"].Value);
+                if (dtg_xesanpham.Rows[e.RowIndex].Cells[e.ColumnIndex].Value == null  )
+                {
+                    MessageBox.Show("Hãy Nhập Số");
+                    LoadAsync();
+                    return;
+                }
                 if (int.TryParse(dtg_xesanpham.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString(), out int soluong))
                 {
+                   
                     var result = await _services.UpdateChiTiet(chitiet, sp, soluong);
                     switch (result)
                     {
@@ -248,26 +255,33 @@ namespace GUI
                             LoadAsync();
                             break;
                         case CheckResult.KoThanhCong:
-                            MessageBox.Show("Sua Ko Thanh Cong");
+                            MessageBox.Show("Sửa Ko Thành Công");
                             LoadAsync();
                             break;
                         case CheckResult.KoTimThayChiTiet:
-                            MessageBox.Show("Ko Thay Chi Tiet");
+                            MessageBox.Show("Ko Thấy Chi Tiết");
                             LoadAsync();
                             break;
                         case CheckResult.KoTimThaySP:
-                            MessageBox.Show("Ko Tim Thay San Pham");
+                            MessageBox.Show("Ko Tìm Thấy Sản Phẩm");
                             LoadAsync();
                             break;
                         case CheckResult.KoDuSoLuong:
-                            MessageBox.Show("Ko Du So Luong");
+                            MessageBox.Show("Ko Đủ Số Lượng");
                             LoadAsync();
                             break;
                         default:
-                            MessageBox.Show("Sua Ko Thanh Cong");
+                            MessageBox.Show("Sửa Ko Thành Công");
                             LoadAsync();
                             break;
                     }
+                }
+                else
+                {
+                    MessageBox.Show("Ko Phải Số");
+                    LoadAsync();
+                    return;
+                    
                 }
             }
         }
